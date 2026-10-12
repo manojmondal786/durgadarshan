@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Status bar icon for "pandal nearby" notifications: the Material
+     "temple_hindu" glyph used in the app's navigation bar. Android draws
+     notification icons as a white silhouette, so this is white on
+     transparent. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M141 235H371L352 171H160L141 235ZM427 235V277H85V235H43V469H213V363H299V469H469V235H427ZM339 128 320 64V21H277V64H234V21H191V67L173 128H339Z" />
+</vector>
