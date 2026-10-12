@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "source": "List of Ahmedabad Durga Puja 2026 (community poster, assets/reference/pandal_list.jpg)",
+  "transcribedOn": "2026-10-12",
+  "about": "Names and addresses are transcribed as printed on the poster, with its status remarks moved into notes. Coordinates, descriptions and images are null, and timings are null unless the poster states them. No location has been verified.",
+  "pandals": [
+    {
+      "id": "airports-authority-community-hall",
+      "posterNumber": 1,
+      "name": "Airports Authority of India Community Hall",
+      "area": "Airport Road",
+      "city": "Ahmedabad",
+      "address": "Airport road, Ahmedabad.",
+      "latitude": 23.06916,
+      "longitude": 72.60198,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Airport Road, Ahmedabad\" matched Airport Road, Shahibaug.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "street",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (street-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "naroda-kalibari",
+      "posterNumber": 2,
+      "name": "Naroda kalibari, All Gujarat Resurgent Trust",
+      "area": "Naroda",
+      "city": "Ahmedabad",
+      "address": "Diamond park, opp. Toyota showroom, Naroda.",
+      "latitude": 23.07326,
+      "longitude": 72.65083,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Naroda, Ahmedabad\" matched Naroda (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "payal-upvan-party-plot",
+      "posterNumber": 3,
+      "name": "Payal upvan party plot",
+      "area": "Maninagar",
+      "city": "Ahmedabad",
+      "address": "near seventh day school, Maninagar.",
+      "latitude": 22.99771,
+      "longitude": 72.60672,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Maninagar, Ahmedabad\" matched Maninagar (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "vaibhav-hall",
+      "posterNumber": 4,
+      "name": "Vaibhav hall",
+      "area": "Ghodasar",
+      "city": "Ahmedabad",
+      "address": "Ghodasar brst cross road, Ghodasar.",
+      "latitude": 22.97852,
+      "longitude": 72.61018,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Ghodasar BRTS, Ahmedabad\" matched Ghodasar BRTS Station.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "landmark",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (nearby landmark); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster prints \"brst cross road\"; this may mean BRTS cross road. Kept as printed."
+      ]
+    },
+    {
+      "id": "ramkrishna-seva-kendra",
+      "posterNumber": 5,
+      "name": "Ramkrishna Seva kendra",
+      "area": "Maninagar",
+      "city": "Ahmedabad",
+      "address": "opp. Laxminarayan society, nr. Railway crossing. Maninagar.",
+      "latitude": 22.99771,
+      "longitude": 72.60672,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Maninagar, Ahmedabad\" matched Maninagar (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "needs_check"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster marks this entry \"(Need to check)\"."
+      ]
+    },
+    {
+      "id": "mukhi-party-plot",
+      "posterNumber": 6,
+      "name": "Mukhi Party plot",
+      "area": "Isanpur",
+      "city": "Ahmedabad",
+      "address": "Jaldhara society, Isanpur",
+      "latitude": 22.98113,
+      "longitude": 72.60129,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Isanpur, Ahmedabad\" matched Isanpur (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "needs_check"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster marks this entry \"(Need to check)\"."
+      ]
+    },
+    {
+      "id": "palkhi-upvan-party-plot",
+      "posterNumber": 7,
+      "name": "Palkhi upvan party plot",
+      "area": "Jasodanagar",
+      "city": "Ahmedabad",
+      "address": "nr. M.B. Patel Farm, Jasodanagar, ahmedabad",
+      "latitude": 22.98387,
+      "longitude": 72.624,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Jashodanagar, Ahmedabad\" matched Jashodanagar Char Rasta BRTS Station.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "bengal-youth-cultural-association",
+      "posterNumber": 8,
+      "name": "Bengal youth cultural association",
+      "area": "Vastral",
+      "city": "Ahmedabad",
+      "address": "sukhray mahadev temple, nr. Vastral gam metro station, Vastral.",
+      "latitude": 22.99487,
+      "longitude": 72.66244,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Vastral, Ahmedabad\" matched Vastral (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "adinath-nagar-indrapark-society",
+      "posterNumber": 9,
+      "name": "Adinath Nagar - indrapark society",
+      "area": "Odhav",
+      "city": "Ahmedabad",
+      "address": "adinath Nagar, odhav Ahmedabad -382415",
+      "latitude": 23.02558,
+      "longitude": 72.66535,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Odhav, Ahmedabad\" matched Odhav Lake.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "adinath-nagar-jadeshwar-mahadev-mandir",
+      "posterNumber": 10,
+      "name": "Adinath Nagar - Jadeshwar Mahadev mandir",
+      "area": "Odhav",
+      "city": "Ahmedabad",
+      "address": "near jadeshvar van , adinath Nagar, odhav, Ahmedabad 382415",
+      "latitude": 23.02558,
+      "longitude": 72.66535,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Odhav, Ahmedabad\" matched Odhav Lake.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "kankaria-open-air-theater",
+      "posterNumber": 11,
+      "name": "Kankaria open air theater",
+      "area": "Kankaria",
+      "city": "Ahmedabad",
+      "address": "Naginawadi, Kankaria.",
+      "latitude": 23.00485,
+      "longitude": 72.60122,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Naginawadi, Kankaria\" matched Naginawadi, Kankaria.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "landmark",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (nearby landmark); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "railway-colony-ground-sabarmati",
+      "posterNumber": 12,
+      "name": "Railway colony: Railway Colony Ground",
+      "area": "Sabarmati",
+      "city": "Ahmedabad",
+      "address": "Sabarmati, Ahmedabad.",
+      "latitude": 23.09567,
+      "longitude": 72.58212,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Railway Colony, Sabarmati, Ahmedabad\" matched Railway Colony, Sabarmati.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "landmark",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (nearby landmark); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "chandkheda-bengal-cultural-association",
+      "posterNumber": 13,
+      "name": "Chandkheda Bengal Cultural Association",
+      "area": "Chandkheda",
+      "city": "Ahmedabad",
+      "address": "Pujo sthal, Ongc, Chandkheda, Ahmedabad.",
+      "latitude": 23.10364,
+      "longitude": 72.58677,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"ONGC, Chandkheda\" matched ONGC Bus Depot, Chandkheda.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "landmark",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (nearby landmark); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "adani-shantigram",
+      "posterNumber": 14,
+      "name": "Adani Shantigram",
+      "area": "Shantigram",
+      "city": "Ahmedabad",
+      "address": "Garden between Shoppers plaza and Waterlily, Adani Shantigram Township, near Vaishnodevi circle, Ahmedabad.",
+      "latitude": 23.16604,
+      "longitude": 72.53666,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Shantigram, Ahmedabad\" matched Water Lily, Shantigram.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "landmark",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (nearby landmark); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "savvy-swaraj-durgotsav",
+      "posterNumber": 15,
+      "name": "Savvy Swaraj Durgotsav",
+      "area": "Gota",
+      "city": "Ahmedabad",
+      "address": "Savvy Swaraj, Gota, Ahmedabad.",
+      "posterAddress": "Savvy Swaraj, Gota, Ahmedabad. / Godrej Garden City ground, behind police booth, Jagatpur.",
+      "latitude": 23.101,
+      "longitude": 72.54084,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Gota, Ahmedabad\" matched Gota (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site. Owner chose the first venue listed on the poster.",
+        "statusBeforeVerification": "conflicting"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster lists two addresses: \"Savvy Swaraj, Gota, Ahmedabad.\" and \"Godrej Garden City ground, behind police booth, Jagatpur.\" It does not say which one is the pandal venue."
+      ]
+    },
+    {
+      "id": "sola",
+      "posterNumber": 16,
+      "name": "Sola",
+      "area": "Naranpura",
+      "city": "Ahmedabad",
+      "address": "besides Manorama party plot, Naranpura cross road, Ahmedabad.",
+      "latitude": 23.05671,
+      "longitude": 72.55086,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Naranpura, Ahmedabad\" matched Naranpura (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "Listed as \"Sola\" on the poster, but the address given is near Naranpura cross road."
+      ]
+    },
+    {
+      "id": "karnavati-bangiya-parishad",
+      "posterNumber": 17,
+      "name": "Karnavati bangiya parishad pujo",
+      "area": "Thaltej",
+      "city": "Ahmedabad",
+      "address": "N.K. Farm, Thaltej",
+      "posterAddress": "N.K. Farm, Thaltej / Govardhan Party Plot, Thaltej",
+      "latitude": 23.04854,
+      "longitude": 72.51174,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Thaltej, Ahmedabad\" matched Thaltej (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site. Owner chose the first venue listed on the poster.",
+        "statusBeforeVerification": "conflicting"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster gives two possible venues: N.K. Farm, Thaltej or Govardhan Party Plot, Thaltej.",
+        "The poster marks this entry \"(Need to confirm location)\"."
+      ]
+    },
+    {
+      "id": "ahmedabad-kalibari",
+      "posterNumber": 18,
+      "name": "Ahmedabad Kalibari pujo",
+      "area": "Sindhu Bhavan Road",
+      "city": "Ahmedabad",
+      "address": "besides Oxygen park, Sindhu bhavan road.",
+      "latitude": 23.04145,
+      "longitude": 72.49243,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Sindhu Bhavan Road, Ahmedabad\" matched Sindhu Bhavan Road, Thaltej.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "street",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (street-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The poster marks this as an \"(updated location)\"."
+      ]
+    },
+    {
+      "id": "shantaram-community-hall",
+      "posterNumber": 19,
+      "name": "Shantaram community hall",
+      "area": "Akhbarnagar",
+      "city": "Ahmedabad",
+      "address": "Chandlodiya Rd, Ramwadi Society, Nirnay Nagar, Akhbarnagar, Ahmedabad.",
+      "latitude": 23.0698,
+      "longitude": 72.55245,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Nirnay Nagar, Ahmedabad\" matched Nirnay Nagar (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "chatterjee-barir-pujo",
+      "posterNumber": 20,
+      "name": "Chatterjee Barir Pujo",
+      "area": "Vastrapur",
+      "city": "Ahmedabad",
+      "address": "D103 (10th floor), konark karishma tower, b/h sunrise mall, judges bunglows road, Vastrapur, Ahmedabad.",
+      "latitude": 23.04009,
+      "longitude": 72.52904,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Vastrapur, Ahmedabad\" matched Vastrapur (suburb).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": "Morning 9 to 12.30 and Evening 6 to 9 pm · Aarti (evening) 8 pm",
+      "description": null,
+      "image": null,
+      "notes": [
+        "The poster says darshan timings are \"STRICTLY TO BE FOLLOWED AS IT IS BARIR PUJO\" (a family home pujo)."
+      ]
+    },
+    {
+      "id": "gandhinagar-sector-22",
+      "posterNumber": 21,
+      "name": "Gandhinagar sector 22",
+      "area": "Gandhinagar",
+      "city": "Gandhinagar",
+      "address": "Rangmanch, Rd Number 6, Sector 28, Gandhinagar.",
+      "latitude": 23.24704,
+      "longitude": 72.65634,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Sector 28, Gandhinagar\" matched Sector 28, Gandhinagar.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site. Pinned at the printed Sector 28 address.",
+        "statusBeforeVerification": "conflicting"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null,
+      "posterCautions": [
+        "The name says \"sector 22\" but the address on the poster says \"Sector 28\"."
+      ]
+    },
+    {
+      "id": "shakti-dwar-charitable-trust",
+      "posterNumber": 22,
+      "name": "Shakti dwar charitable trust",
+      "area": "Ghodasar",
+      "city": "Ahmedabad",
+      "address": "Maa Shakti party plot, opp. Comfy hotel, parasnagar, ghodasar.",
+      "latitude": 22.97852,
+      "longitude": 72.61018,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Ghodasar, Ahmedabad\" matched Ghodasar BRTS Station.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "durga-ground-vatva",
+      "posterNumber": 23,
+      "name": "Durga Ground",
+      "area": "Vatva",
+      "city": "Ahmedabad",
+      "address": "Nr. Tanker 3 apartment, opp. Navjivan flat, Vatva.",
+      "latitude": 22.959,
+      "longitude": 72.6298,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Vatva, Ahmedabad\" matched Vatva railway station.",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "bavla-durga-puja-association",
+      "posterNumber": 24,
+      "name": "Bavla Durga puja association",
+      "area": "Bavla",
+      "city": "Bavla",
+      "address": "Amrut bagh, Bavla, Ahmedabad.",
+      "latitude": 22.82789,
+      "longitude": 72.36847,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Bavla\" matched Bavla (town).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    },
+    {
+      "id": "sanand-durga-puja",
+      "posterNumber": 25,
+      "name": "Sanand Durga Puja",
+      "area": "Sanand",
+      "city": "Sanand",
+      "address": "beside brilliance International School, Nalsarover Road, Sanand.",
+      "latitude": 22.99245,
+      "longitude": 72.38256,
+      "verificationStatus": "verified",
+      "verification": {
+        "coordinatesSource": "OpenStreetMap address lookup (Nominatim) on 2026-10-12: \"Sanand\" matched Sanand (town).",
+        "coordinatesRecordedOn": "2026-10-12",
+        "coordinatesPrecision": "area",
+        "verifiedOn": "2026-10-12",
+        "verificationNote": "Owner confirmed the poster address on 2026-10-12. Pin placed from an OpenStreetMap address lookup (area-level); not checked on site.",
+        "statusBeforeVerification": "unverified"
+      },
+      "timings": null,
+      "description": null,
+      "image": null,
+      "notes": null
+    }
+  ]
+}
