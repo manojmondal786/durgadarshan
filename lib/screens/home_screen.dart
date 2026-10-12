@@ -290,6 +290,14 @@ class _Footer extends StatelessWidget {
             style: Theme.of(context).textTheme.labelSmall
                 ?.copyWith(color: AppColors.inkMuted),
           ),
+          const SizedBox(height: 4),
+          Text(
+            'App opens are counted anonymously with Google Analytics. No '
+            'names or GPS location are sent.',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.labelSmall
+                ?.copyWith(color: AppColors.inkMuted, fontSize: 10.5),
+          ),
         ],
       ),
     );

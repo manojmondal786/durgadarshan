@@ -371,6 +371,27 @@ flutter build web --release --base-href /durgadarshan/
 touch build/web/.nojekyll
 ```
 
+## Usage analytics
+
+Installs and active users are counted with Google Analytics for Firebase
+(free), from version 1.0.2. Only Firebase's automatic events are sent (first
+open, sessions, engagement) plus a `launch_mode` user property:
+`android_app`, `home_screen` (the web app added to a Home Screen) or
+`browser`. No location, pandal, visit or personal data is logged, the
+advertising ID is not collected, and ad features are off.
+
+The Firebase config is not in git. To build, `lib/firebase_options.dart`
+(created from the Firebase console's Android and Web app settings) must
+exist locally; `android/app/google-services.json` is not needed.
+
+Reports: Firebase console → Analytics. **Realtime** shows the last 30
+minutes; **Dashboard** shows new and active users by platform, with up to a
+day's delay. To split by launch mode, register `launch_mode` as a custom
+user-scoped dimension (Analytics → Custom definitions).
+
+Android counts only cover people who install 1.0.2 or later: copies
+installed from Drive never update themselves.
+
 ## Release signing
 
 Release builds are signed with the key described in `android/key.properties`,

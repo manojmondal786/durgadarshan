@@ -52,3 +52,9 @@ app.*.map.json
 
 # Release APKs and QR posters built for sharing
 /dist/
+
+# Firebase project config for usage analytics: created by the owner in the
+# Firebase console, never committed. See README, "Usage analytics".
+google-services.json
+GoogleService-Info.plist
+lib/firebase_options.dart
