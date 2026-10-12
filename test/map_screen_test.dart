@@ -205,7 +205,7 @@ void main() {
 
     await tester.tap(find.text('View details'));
     await tester.pumpAndSettle();
-    expect(find.text('Timings'), findsOneWidget);
+    expect(find.text('Visiting Hours'), findsOneWidget);
     expect(find.text('Search in Maps'), findsNothing);
 
     await tester.ensureVisible(find.text('Open in Maps'));
@@ -306,7 +306,7 @@ void main() {
     await tester.tap(find.text('Test Second Pandal'));
     await tester.pumpAndSettle();
     expect(find.text('Test Second Pandal'), findsWidgets);
-    expect(find.text('Timings'), findsOneWidget);
+    expect(find.text('Visiting Hours'), findsOneWidget);
   });
 
   testWidgets('shows your location while nearby alerts are on', (tester) async {

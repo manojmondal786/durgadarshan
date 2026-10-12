@@ -256,6 +256,37 @@ void main() {
           (r) => r..['verificationStatus'] = 'probably',
         ),
         'used more than once': documentWith((r) => r..['posterNumber'] = 2),
+        'must not have a "planningCutoff"': documentWith(
+          (r) => r
+            ..['schedule'] = {
+              'source': 'poster',
+              'events': [
+                {'label': 'Aarti', 'time': '20:00'},
+              ],
+            },
+        ),
+        '"schedule" is invalid': documentWith(
+          (r) => r
+            ..['planningCutoff'] = null
+            ..['schedule'] = {'source': 'rumour', 'sessions': <Object?>[]},
+        ),
+        '"planningCutoff" must be null or': documentWith(
+          (r) => r..['planningCutoff'] = {'time': '24:00', 'status': 'final'},
+        ),
+        'unknown descriptionBasis': documentWith(
+          (r) => r..['descriptionBasis'] = 'hearsay',
+        ),
+        'based on published sources but lists none': documentWith(
+          (r) => r
+            ..['descriptionBasis'] = 'published-sources'
+            ..['descriptionSources'] = <Object?>[],
+        ),
+        'with a title and url': documentWith(
+          (r) => r
+            ..['descriptionSources'] = [
+              {'title': 'No link'},
+            ],
+        ),
         '"name" must be a non-empty string': documentWith(
           (r) => r..['name'] = '',
         ),

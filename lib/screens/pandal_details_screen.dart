@@ -8,6 +8,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_images.dart';
 import '../theme/app_motion.dart';
 import '../theme/app_typography.dart';
+import '../widgets/about_pandal_card.dart';
 import '../widgets/address_search_sheet.dart';
 import '../widgets/faded_image.dart';
 import '../widgets/favourite_button.dart';
@@ -18,6 +19,7 @@ import '../widgets/pandal_cards.dart';
 import '../widgets/responsive.dart';
 import '../widgets/star_rating.dart';
 import '../widgets/visit_sheet.dart';
+import '../widgets/visiting_hours_card.dart';
 
 class PandalDetailsScreen extends StatelessWidget {
   const PandalDetailsScreen({super.key, required this.pandal});
@@ -52,8 +54,6 @@ class PandalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final address = pandal.address;
-    final timings = pandal.timings;
-    final description = pandal.description;
     final width = MediaQuery.sizeOf(context).width;
     final expandedHeight = width >= Breakpoints.expanded ? 360.0 : 250.0;
 
@@ -123,27 +123,10 @@ class PandalDetailsScreen extends StatelessWidget {
                         value: address ?? 'Address not listed',
                         isPlaceholder: address == null,
                       ),
-                      InfoTile(
-                        icon: Icons.schedule_rounded,
-                        label: 'Timings',
-                        value: timings ?? 'Not announced yet',
-                        isPlaceholder: timings == null,
-                        caption: timings == null
-                            ? 'Please check with the organisers before '
-                                  'visiting.'
-                            : 'As printed on the 2026 Ahmedabad Durga Puja '
-                                  'list.',
-                      ),
-                      InfoTile(
-                        icon: Icons.feed_outlined,
-                        label: 'About',
-                        value:
-                            description ??
-                            'More about this pandal — its theme, idol, bhog '
-                                'and cultural programmes — will be added '
-                                'when it’s available.',
-                        isPlaceholder: description == null,
-                      ),
+                      const SizedBox(height: 8),
+                      VisitingHoursCard(pandal: pandal),
+                      const SizedBox(height: 16),
+                      AboutPandalCard(description: pandal.description),
                       if (pandal.notes.isNotEmpty) ...[
                         const SizedBox(height: 8),
                         _NotesCard(notes: pandal.notes),

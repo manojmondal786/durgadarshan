@@ -1,5 +1,6 @@
 import 'package:durga_darshan/data/map_config.dart';
 import 'package:durga_darshan/models/coordinates.dart';
+import 'package:durga_darshan/models/visiting_hours.dart';
 import 'package:latlong2/latlong.dart';
 
 typedef JsonMap = Map<String, Object?>;
@@ -17,6 +18,20 @@ const validStatuses = {
 
 /// Statuses that carry a warning from the source poster.
 const flaggedStatuses = {statusNeedsCheck, statusConflicting};
+
+/// What a description draws on: published sources (listed beside it in
+/// "descriptionSources") or only the poster and general Durga Puja
+/// traditions.
+const descriptionBases = {'published-sources', 'poster'};
+
+bool _isClockTime(Object? value) {
+  try {
+    ClockTime.parse(value);
+    return true;
+  } on FormatException {
+    return false;
+  }
+}
 
 /// Where a pandal's location stands in the verification workflow.
 enum LocationState {
@@ -290,6 +305,52 @@ List<String> validateDocument(Object? document) {
               list.any((n) => n is! String || n.trim().isEmpty))) {
         problem('"$key" must be null or a list of non-empty strings.');
       }
+    }
+
+    final schedule = record['schedule'];
+    if (schedule != null) {
+      try {
+        VisitingSchedule.fromJson(schedule);
+      } on FormatException catch (error) {
+        problem('"schedule" is invalid: ${error.message}.');
+      }
+    }
+    final cutoff = record['planningCutoff'];
+    if (cutoff != null) {
+      if (cutoff is! JsonMap ||
+          cutoff['status'] != 'tentative' ||
+          !_isClockTime(cutoff['time'])) {
+        problem(
+          '"planningCutoff" must be null or {"time": "HH:mm", '
+          '"status": "tentative"}.',
+        );
+      } else if (schedule != null) {
+        problem('has a "schedule", so it must not have a "planningCutoff".');
+      }
+    }
+
+    final basis = record['descriptionBasis'];
+    final sources = record['descriptionSources'];
+    if (basis != null && !descriptionBases.contains(basis)) {
+      problem('unknown descriptionBasis "$basis".');
+    }
+    if (sources != null &&
+        (sources is! List ||
+            sources.any(
+              (s) =>
+                  s is! JsonMap ||
+                  [
+                    s['title'],
+                    s['url'],
+                  ].any((v) => v is! String || v.trim().isEmpty),
+            ))) {
+      problem(
+        '"descriptionSources" must be a list of objects with a title and '
+        'url.',
+      );
+    } else if (basis == 'published-sources' &&
+        (sources is! List || sources.isEmpty)) {
+      problem('is based on published sources but lists none.');
     }
 
     final verification = record['verification'];

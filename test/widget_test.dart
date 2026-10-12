@@ -6,9 +6,11 @@ import 'package:durga_darshan/services/external_maps.dart';
 import 'package:durga_darshan/services/location_source.dart';
 import 'package:durga_darshan/theme/app_images.dart';
 import 'package:durga_darshan/theme/app_motion.dart';
+import 'package:durga_darshan/widgets/about_pandal_card.dart';
 import 'package:durga_darshan/widgets/address_search_sheet.dart';
 import 'package:durga_darshan/widgets/map/pins.dart';
 import 'package:durga_darshan/widgets/pandal_cards.dart';
+import 'package:durga_darshan/widgets/visiting_hours_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -222,14 +224,25 @@ void main() {
   });
 
   testWidgets(
-    'details without a pin show placeholders and search the address',
+    'details without a pin show tentative hours and search the address',
     (tester) async {
       await pumpApp(tester);
       await openDetailsFromList(tester, 'vaibhav');
 
       expect(find.text('Ghodasar brst cross road, Ghodasar.'), findsOneWidget);
-      expect(find.text('Not announced yet'), findsOneWidget);
-      expect(find.textContaining('will be added'), findsOneWidget);
+      expect(find.text(VisitingHoursCard.estimatedTag), findsOneWidget);
+      expect(
+        find.text('Until 12:00 AM (Midnight) — Tentative', findRichText: true),
+        findsOneWidget,
+      );
+      expect(find.text(VisitingHoursCard.cutoffDisclaimer), findsOneWidget);
+      expect(find.text('Not announced yet'), findsNothing);
+      expect(find.text(AboutPandalCard.title), findsOneWidget);
+      expect(
+        find.textContaining('Vaibhav Hall, by the Ghodasar'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('will be added'), findsNothing);
       expect(find.text('Representative image'), findsOneWidget);
       // Poster caution notes are kept in the data but never shown.
       expect(find.text('Notes from the list'), findsNothing);
@@ -281,11 +294,22 @@ void main() {
     await pumpApp(tester);
     await openDetailsFromList(tester, 'chatterjee');
 
-    expect(find.textContaining('Morning 9 to 12.30'), findsOneWidget);
+    expect(find.text(VisitingHoursCard.posterTag), findsOneWidget);
+    expect(find.text('Morning visiting'), findsOneWidget);
+    expect(find.text('9:00 AM – 12:30 PM'), findsOneWidget);
+    expect(find.text('Evening visiting'), findsOneWidget);
+    expect(find.text('6:00 PM – 9:00 PM'), findsOneWidget);
+    expect(find.text('Evening Aarti'), findsOneWidget);
+    expect(find.text('8:00 PM'), findsOneWidget);
     expect(
       find.text('As printed on the 2026 Ahmedabad Durga Puja list.'),
       findsOneWidget,
     );
+    // The poster's hours are never replaced by the planning cutoff.
+    expect(find.text(VisitingHoursCard.estimatedTag), findsNothing);
+    expect(find.textContaining('Midnight', findRichText: true), findsNothing);
+
+    expect(find.textContaining('private home'), findsOneWidget);
     expect(find.text('Notes from the list'), findsOneWidget);
     expect(find.textContaining('BARIR PUJO'), findsOneWidget);
   });
@@ -448,7 +472,7 @@ void main() {
 
     presenter.onOpen!('test-pinned');
     await tester.pumpAndSettle();
-    expect(find.text('Timings'), findsOneWidget);
+    expect(find.text('Visiting Hours'), findsOneWidget);
   });
 
   testWidgets('blocked location access points to Settings', (tester) async {
@@ -512,7 +536,7 @@ void main() {
       data: PandalRepository(const [_pinned]),
       presenter: FakeAlertPresenter(launchedFrom: 'test-pinned'),
     );
-    expect(find.text('Timings'), findsOneWidget);
+    expect(find.text('Visiting Hours'), findsOneWidget);
 
     await tester.tap(find.byTooltip('Back'));
     await tester.pumpAndSettle();
@@ -698,7 +722,7 @@ void main() {
     await tester.tap(find.byType(FeaturedPandalCard).first);
     await tester.pump();
     await tester.pump();
-    expect(fullyShown(find.text('Timings')), isTrue);
+    expect(fullyShown(find.text('Visiting Hours')), isTrue);
     expect(fullyShown(find.text('Add to Favourites')), isTrue);
     await tester.pumpAndSettle();
   });

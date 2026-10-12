@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'coordinates.dart';
+import 'visiting_hours.dart';
 
 /// How far a pandal's location can be trusted.
 enum VerificationStatus {
@@ -45,6 +46,8 @@ class Pandal {
     this.longitude,
     this.verificationStatus = VerificationStatus.unverified,
     this.timings,
+    this.schedule,
+    this.planningCutoff,
     this.description,
     this.imageAsset,
     this.notes = const [],
@@ -52,6 +55,10 @@ class Pandal {
   }) : assert(
          (latitude == null) == (longitude == null),
          'latitude and longitude must both be set or both be null',
+       ),
+       assert(
+         schedule == null || planningCutoff == null,
+         'a planning cutoff is only for pandals without a schedule',
        );
 
   /// Parses one record of `assets/data/pandals.json`.
@@ -101,6 +108,29 @@ class Pandal {
       throw FormatException('Pandal "featured" must be a boolean', json);
     }
 
+    final rawSchedule = json['schedule'];
+    final schedule = rawSchedule == null
+        ? null
+        : VisitingSchedule.fromJson(rawSchedule);
+
+    final rawCutoff = json['planningCutoff'];
+    ClockTime? planningCutoff;
+    if (rawCutoff is Map<String, Object?> &&
+        rawCutoff['status'] == 'tentative') {
+      planningCutoff = ClockTime.parse(rawCutoff['time']);
+    } else if (rawCutoff != null) {
+      throw FormatException(
+        'Pandal "planningCutoff" must be a tentative time or null',
+        json,
+      );
+    }
+    if (schedule != null && planningCutoff != null) {
+      throw FormatException(
+        'Pandal has a schedule, so it must not have a planning cutoff',
+        json,
+      );
+    }
+
     final rawNotes = json['notes'];
     final notes = <String>[];
     if (rawNotes is List) {
@@ -127,6 +157,8 @@ class Pandal {
         json['verificationStatus'] ?? VerificationStatus.unverified.jsonValue,
       ),
       timings: optionalString('timings'),
+      schedule: schedule,
+      planningCutoff: planningCutoff,
       description: optionalString('description'),
       imageAsset: optionalString('image'),
       notes: List.unmodifiable(notes),
@@ -148,8 +180,19 @@ class Pandal {
   final double? longitude;
   final VerificationStatus verificationStatus;
 
-  /// Human-readable darshan timings, null when not announced.
+  /// Darshan timings exactly as printed on the poster, null when it gives
+  /// none. [schedule] holds the same hours in structured form.
   final String? timings;
+
+  /// Actual visiting hours, from the poster or the organisers.
+  final VisitingSchedule? schedule;
+
+  /// A tentative time to plan a visit around, for pandals with no
+  /// [schedule]. It is not a closing time: show it only with its
+  /// disclaimer, and never use it for open/closed status or reminders.
+  final ClockTime? planningCutoff;
+
+  /// The About Pandal text. Its sources are kept in the data file.
   final String? description;
 
   /// Bundled photo, e.g. `assets/images/pandals/<id>.jpg`. Null shows the

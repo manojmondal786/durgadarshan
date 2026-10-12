@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "List of Ahmedabad Durga Puja 2026 (community poster, assets/reference/pandal_list.jpg)",
   "transcribedOn": "2026-10-12",
-  "about": "Names and addresses are transcribed as printed on the poster, with its status remarks moved into notes. Coordinates, descriptions and images are null, and timings are null unless the poster states them. No location has been verified.",
+  "about": "Names and addresses are transcribed as printed on the poster, with its status remarks moved into notes. Coordinates, descriptions and images are null, and timings are null unless the poster states them. No location has been verified. Since then, locations have been pinned (see each record's \"verification\"). On 2026-10-12 every pandal gained a description: \"descriptionBasis\" says whether it draws on the published sources listed in \"descriptionSources\" or only on the poster and general Durga Puja traditions. \"schedule\" holds hours from the poster or organisers; pandals without real hours get a tentative \"planningCutoff\" instead, which is a planning aid, never a closing time.",
   "pandals": [
     {
       "id": "airports-authority-community-hall",
@@ -23,7 +23,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This puja is held at the Airports Authority of India Community Hall on Airport Road, on the airport side of the city. Hall pujos have an intimate, neighbourly feel, and the Puja days follow a familiar rhythm: the Goddess is welcomed on Shashthi, offered anjali on Ashtami morning and bid a tearful farewell on Bijoya Dashami. It makes a convenient stop if your darshan route takes you north towards the airport.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -46,7 +53,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Naroda Kalibari, listed with the All Gujarat Resurgent Trust, keeps its puja at Diamond Park, opposite the Toyota showroom in Naroda, in eastern Ahmedabad. In Bengal a kalibari is a home of Maa Kali, and the Durga Puja calendar there traditionally runs from the nabapatrika bath on Saptami to Sandhi Puja, the sacred moment where Ashtami meets Navami. The Toyota showroom is the easiest landmark to look for on the way.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -69,7 +83,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Payal Upvan Party Plot, near the Seventh Day school in Maninagar, turns into a pujo ground for the festival in this busy south Ahmedabad neighbourhood. Evenings at Bengali pujos traditionally belong to the aarti, the fragrant smoke of the dhunuchi and the rolling beat of the dhaak. The Ramkrishna Seva Kendra puja is also listed in Maninagar, so the two fit comfortably into one outing.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -92,7 +113,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Vaibhav Hall, by the Ghodasar cross road, hosts this puja in southern Ahmedabad. A hall setting brings devotees close to the Goddess and to one another, much as neighbourhood pujos in Bengal do. Ghodasar has a second puja on this list, at the Shakti Dwar Charitable Trust’s Maa Shakti Party Plot, and Mukhi Party Plot in neighbouring Isanpur is close by, which makes the area a natural cluster for an evening of pandal hopping.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -118,7 +146,14 @@
         "statusBeforeVerification": "needs_check"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This puja is listed under the Ramkrishna Seva Kendra, opposite Laxminarayan Society near the railway crossing in Maninagar; the crossing is the landmark to watch for. The festival’s heart is the same in every neighbourhood pujo: bodhon awakening the Goddess on Shashthi, flowers offered at Ashtami anjali, and Bijoya greetings once she departs. Payal Upvan Party Plot, also in Maninagar, is near enough to visit on the same trip.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -144,7 +179,14 @@
         "statusBeforeVerification": "needs_check"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Mukhi Party Plot, in Jaldhara Society, Isanpur, hosts this south Ahmedabad puja. Isanpur sits beside Ghodasar, where Vaibhav Hall and the Shakti Dwar Charitable Trust also hold pujas on this list, so the three make an easy round of darshan. For many families, Durga Puja means new clothes, long evenings of adda with friends, and offering anjali to Maa Durga on Ashtami morning.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -170,7 +212,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Palkhi Upvan Party Plot, near M.B. Patel Farm in Jasodanagar, is the setting for this puja in south-east Ahmedabad; the farm is the landmark to ask for. Like Bengali pujos everywhere, the five days from Shashthi to Dashami move from the joyful welcome of Maa Durga to her emotional farewell, when married women traditionally share sindoor khela before the Goddess leaves for Kailash.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -193,7 +242,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Bengal Youth Cultural Association holds its puja at the Sukhray Mahadev temple near Vastral Gam metro station, in eastern Ahmedabad. With the station close by, it is one of the easier pujas on this list to reach without a car. A puja beside a Mahadev temple has a naturally devotional setting: in Bengali tradition the festival marks Uma’s homecoming from Kailash, the abode of her consort Shiva.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -216,7 +272,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "One of two pujas in Adinath Nagar, Odhav, this celebration is held at Indrapark Society in the city’s industrial east. Society pujos are celebrated close to home, where neighbours gather each evening for aarti and children grow up with the sound of the dhaak. The second Adinath Nagar puja, at the Jadeshwar Mahadev mandir near Jadeshwar Van, is listed in the same locality, so both can be visited in one trip.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -239,7 +302,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The second of Adinath Nagar’s two pujas is held at the Jadeshwar Mahadev mandir, near Jadeshwar Van in Odhav. In Bengali belief, Durga Puja celebrates Uma’s yearly visit to her parents’ home with her children before she returns to Shiva on Kailash, a fitting thought at a Mahadev temple. The Indrapark Society puja in the same locality makes this an easy pair to visit together.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -262,7 +332,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This puja is listed at the Kankaria open air theatre, Naginawadi, by Kankaria Lake, one of Ahmedabad’s best-loved places for a family outing. Pairing darshan with an evening by the lake makes for a memorable visit, especially as dusk falls and the sandhya aarti begins at pujos across the city. Lakefront access arrangements can change during the festival season, so check them before you go.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -285,7 +362,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Railway Colony Ground in Sabarmati, north Ahmedabad, is the setting for this puja. Pujos in railway colonies are a familiar part of the festival in many Indian cities, bringing together families from many regions under one pandal. As at any Bengali pujo, Ashtami is traditionally the most crowded day, with morning anjali and Sandhi Puja, so plan your visit around it if you prefer a quieter darshan.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -308,7 +392,39 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Chandkheda Bengal Cultural Association brings a Bengali community pujo to Chandkheda in north Ahmedabad. In recent years, local guides have recommended it for traditional rituals, cultural performances, Bengali food, beautifully decorated idols and a welcoming, family-friendly atmosphere, and listed it at Utsav Residency in Nigam Nagar. For 2026, the community list gives the venue as the Pujo Sthal at ONGC, Chandkheda; this year’s programme has not been announced.",
+      "descriptionBasis": "published-sources",
+      "descriptionSources": [
+        {
+          "title": "Glimpses of Bengal in Gujarat: Check out THESE Durga Puja Pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/glimpses-of-bengal-in-gujarat-check-out-these-durga-puja-pandals-in-ahmedabad",
+          "published": "2023-10-21",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Organiser; venue listed at Utsav Residency Block-A, Nigam Nagar; traditional rituals, performances and Bengali dishes."
+        },
+        {
+          "title": "Navratri 2024: 5 must-visit Durga Puja pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/navratri-2024-5-must-visit-durga-puja-pandals-in-ahmedabad/",
+          "published": "2024-10 (approximate; the page shows no date)",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Listed at Utsav Residency Block A; local crowd, decorated idols, welcoming community atmosphere."
+        },
+        {
+          "title": "Explore Vibrant Durga Puja Celebrations in Gujarat",
+          "publisher": "Sceneloc8",
+          "url": "https://sceneloc8.com/explore-vibrant-durga-puja-celebrations-in-gujarat-best-pandals-amp-tips-for-content-creators/",
+          "published": null,
+          "accessedOn": "2026-10-12",
+          "usedFor": "Family-friendly ambience."
+        }
+      ],
       "image": null,
       "notes": null
     },
@@ -331,7 +447,31 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This puja is held in the garden between Shoppers Plaza and Waterlily in Adani Shantigram township, near Vaishnodevi Circle. Guides from 2023 and 2024 credit it to the Shantigram Bengali Cultural Association and highlight its all-woman organising team, with sindoor khela, an immersion procession, music, dance, and food and book stalls in those years. Details of the 2026 programme have not been announced.",
+      "descriptionBasis": "published-sources",
+      "descriptionSources": [
+        {
+          "title": "Glimpses of Bengal in Gujarat: Check out THESE Durga Puja Pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/glimpses-of-bengal-in-gujarat-check-out-these-durga-puja-pandals-in-ahmedabad",
+          "published": "2023-10-21",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Organised by the Shantigram Bengali Cultural Association with an all-woman team; sindoor khela, immersion procession, cultural shows, food and book stalls."
+        },
+        {
+          "title": "Navratri 2024: 5 must-visit Durga Puja pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/navratri-2024-5-must-visit-durga-puja-pandals-in-ahmedabad/",
+          "published": "2024-10 (approximate; the page shows no date)",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Same organiser and all-female management; sindoor khela, immersion, dance and music."
+        }
+      ],
       "image": null,
       "notes": null
     },
@@ -355,7 +495,14 @@
         "statusBeforeVerification": "conflicting"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Savvy Swaraj Durgotsav is a residential-community puja in Gota, on Ahmedabad’s north-western edge. ‘Durgotsav’ simply means the festival of Durga, and society pujos like this carry a homely warmth, with residents gathering for the rituals and evening aarti of the Puja days. Coming from the city, Gota makes a good first or last stop on a west Ahmedabad pandal-hopping route.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -381,7 +528,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Sola puja is held beside Manorama Party Plot, near Naranpura cross road in west Ahmedabad. Naranpura is a long-settled residential area, and the Shantaram Community Hall puja in nearby Akhbarnagar is also on this list, so the two pair well. Across Bengali pujos, Navami evening traditionally carries a special intensity, as devotees savour the last full night of the Goddess’s stay before Dashami.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -408,7 +562,39 @@
         "statusBeforeVerification": "conflicting"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Karnavati Bangiya Parishad, which describes itself as a non-profit, charitable organisation serving the underprivileged, holds one of Thaltej’s best-known Bengali pujos. Past listings show its Durgotsab at NK Farm in 2023 and its Sarbojonin Durga puja at Govardhan Party Plot in 2024, and guides have praised its lively cultural activities, competitions and traditional Bengali performances. The 2026 list gives N.K. Farm, Thaltej; this year’s programme has not been announced.",
+      "descriptionBasis": "published-sources",
+      "descriptionSources": [
+        {
+          "title": "Karnavati Bangiya Parishad (organiser page)",
+          "publisher": "AllEvents",
+          "url": "https://allevents.in/org/karnavati-bangiya-parishad/13908312",
+          "published": null,
+          "accessedOn": "2026-10-12",
+          "usedFor": "Self-description as a non-profit, charitable organisation serving the underprivileged; KBP Durgotsab 2023 at NK Farm; KBP Sarbojonin Durga 2024 at Govardhan Party Plot."
+        },
+        {
+          "title": "Navratri 2024: 5 must-visit Durga Puja pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/navratri-2024-5-must-visit-durga-puja-pandals-in-ahmedabad/",
+          "published": "2024-10 (approximate; the page shows no date)",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Lively atmosphere, cultural activities, competitions and traditional Bengali performances."
+        },
+        {
+          "title": "Glimpses of Bengal in Gujarat: Check out THESE Durga Puja Pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/glimpses-of-bengal-in-gujarat-check-out-these-durga-puja-pandals-in-ahmedabad",
+          "published": "2023-10-21",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Listed as a must-visit puja in Thaltej."
+        }
+      ],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -435,7 +621,55 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This is the Durga Puja of the Bengal Cultural Association, widely described as Ahmedabad’s oldest Bengali organisation, whose pujo goes back more than eight decades; it marked its 86th puja in 2023. In past years it was held beside the Kalibari temple in Ambli, with dhunuchi dance, community bhog, Bengali food, drama and cultural performances drawing tens of thousands of visitors. For 2026 the list places it beside Oxygen Park on Sindhu Bhavan Road; this year’s programme has not been announced.",
+      "descriptionBasis": "published-sources",
+      "descriptionSources": [
+        {
+          "title": "Bengal Cultural Association",
+          "publisher": "Bengal Cultural Association (ahmedabadkalibari.com)",
+          "url": "https://ahmedabadkalibari.com/?p=17",
+          "published": null,
+          "accessedOn": "2026-10-12",
+          "usedFor": "Organiser; the puja's long history in Ahmedabad."
+        },
+        {
+          "title": "Durga Puja 2022",
+          "publisher": "Bengal Cultural Association (ahmedabadkalibari.com)",
+          "url": "https://ahmedabadkalibari.com/?p=610",
+          "published": "2022",
+          "accessedOn": "2026-10-12",
+          "usedFor": "2022 venue at Ahmedabad Kalibari Ground, Ambli; cultural programmes and Bengali food; footfall."
+        },
+        {
+          "title": "The 86th Kalibari Durga Puja'23 sponsorship proposal",
+          "publisher": "Bengal Cultural Association",
+          "url": "https://ahmedabadkalibari.com/wp-content/uploads/2023/09/durga-puja-23-sponsorship-proposal.pdf",
+          "published": "2023-09-12",
+          "accessedOn": "2026-10-12",
+          "usedFor": "86th puja in 2023 at Ahmedabad Kalibari, Ambli; dhunuchi dance, community bhog, drama, folk shows, food courts; 70,000+ visitors in 2019."
+        },
+        {
+          "title": "Ahmedabad Kali Bari",
+          "publisher": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ahmedabad_Kali_Bari",
+          "published": null,
+          "accessedOn": "2026-10-12",
+          "usedFor": "Run by the Bengal Cultural Association, described as the city's oldest Bengali group; puja held on the field next to the temple."
+        },
+        {
+          "title": "Navratri 2024: 5 must-visit Durga Puja pandals in Ahmedabad!",
+          "publisher": "Knocksense",
+          "url": "https://www.knocksense.com/ahmedabad/navratri-2024-5-must-visit-durga-puja-pandals-in-ahmedabad/",
+          "published": "2024-10 (approximate; the page shows no date)",
+          "accessedOn": "2026-10-12",
+          "usedFor": "Organised by the Bengal Cultural Association; over 90,000 visitors each year; Bengali food stalls."
+        }
+      ],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -461,7 +695,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Shantaram Community Hall, off Chandlodiya Road by Ramwadi Society in Nirnay Nagar, Akhbarnagar, hosts this west Ahmedabad puja. A community hall gives the celebration a close-knit, neighbourly character, in the spirit of the sarbojanin pujos that Bengal opened to everyone. The Sola puja beside Manorama Party Plot near Naranpura cross road is nearby, making an easy two-stop evening.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -484,7 +725,31 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": "Morning 9 to 12.30 and Evening 6 to 9 pm · Aarti (evening) 8 pm",
-      "description": null,
+      "schedule": {
+        "source": "poster",
+        "sessions": [
+          {
+            "label": "Morning visiting",
+            "start": "09:00",
+            "end": "12:30"
+          },
+          {
+            "label": "Evening visiting",
+            "start": "18:00",
+            "end": "21:00"
+          }
+        ],
+        "events": [
+          {
+            "label": "Evening Aarti",
+            "time": "20:00"
+          }
+        ]
+      },
+      "planningCutoff": null,
+      "description": "Chatterjee Barir Pujo is a family puja held in a private home: D103 on the 10th floor of Konark Karishma tower, behind Sunrise Mall on Judges Bungalows Road, Vastrapur. ‘Barir pujo’ means a puja at home, a cherished Bengali tradition in which a family welcomes Maa Durga as an honoured guest. Visitors are guests in a residence, so please keep strictly to the printed darshan hours, be mindful of neighbours and follow the family’s arrangements.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": [
         "The poster says darshan timings are \"STRICTLY TO BE FOLLOWED AS IT IS BARIR PUJO\" (a family home pujo)."
@@ -509,7 +774,14 @@
         "statusBeforeVerification": "conflicting"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "This puja brings the festival to Gandhinagar, Gujarat’s planned capital, at the Rangmanch on Road No. 6. Pujos away from the big city often feel especially close-knit, with families who have made their home far from Bengal coming together for the five days. For visitors from Ahmedabad, Chandkheda lies on the way, so its puja can be combined with this one.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null,
       "posterCautions": [
@@ -535,7 +807,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Shakti Dwar Charitable Trust holds this puja at Maa Shakti Party Plot, opposite Comfy Hotel in Parasnagar, Ghodasar. A venue named for Maa Shakti is a fitting home for the festival of the Goddess, whom devotees honour as the embodiment of shakti, divine power. Vaibhav Hall, also in Ghodasar, and Mukhi Party Plot in neighbouring Isanpur are on this list too, for an easy round of south Ahmedabad darshan.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -558,7 +837,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Fittingly named Durga Ground, this venue near Tanker 3 apartment, opposite Navjivan flat in Vatva, hosts a puja for south-east Ahmedabad. Vatva is best known for its industrial estate, and neighbourhood pujos here give families a celebration close to home. The Puja days traditionally end on Bijoya Dashami, when the Goddess is bid farewell and friends and families exchange greetings and embraces.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -581,7 +867,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "The Bavla Durga Puja Association celebrates at Amrut Bagh in Bavla, a town south-west of Ahmedabad on the road towards Saurashtra. For families in and around Bavla, it brings Maa Durga close to home without the trip into the city. The festival’s traditional moments remain the same wherever it is held: the Goddess’s welcome on Shashthi, anjali on Ashtami and the farewell of Bijoya Dashami.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     },
@@ -604,7 +897,14 @@
         "statusBeforeVerification": "unverified"
       },
       "timings": null,
-      "description": null,
+      "schedule": null,
+      "planningCutoff": {
+        "time": "00:00",
+        "status": "tentative"
+      },
+      "description": "Sanand Durga Puja is held beside Brilliance International School on Nalsarovar Road, in the fast-growing industrial town of Sanand, west of Ahmedabad. For families who live and work around Sanand, it brings the festival close to home. The rhythm of the five days is timeless: the beat of the dhaak, evening aarti in clouds of dhunuchi smoke and, on Dashami, the bittersweet farewell to Maa Durga.",
+      "descriptionBasis": "poster",
+      "descriptionSources": [],
       "image": null,
       "notes": null
     }
