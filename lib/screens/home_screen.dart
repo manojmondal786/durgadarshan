@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../data/pandal_repository.dart';
@@ -154,12 +155,16 @@ class _HomeScreenState extends State<HomeScreen> with FirstReveal {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                   ),
                 ),
-                ContentWidth(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-                    child: NearbyAlertsCard(controller: scope.nearbyAlerts),
+                // Web apps can't follow the user's location in the
+                // background, and an iPhone barely lets them notify, so the
+                // web version (used on iPhones) leaves alerts out.
+                if (!kIsWeb)
+                  ContentWidth(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                      child: NearbyAlertsCard(controller: scope.nearbyAlerts),
+                    ),
                   ),
-                ),
                 const SizedBox(height: 28),
                 const _Footer(),
               ],

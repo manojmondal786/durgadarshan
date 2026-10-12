@@ -2,6 +2,7 @@ import 'package:durga_darshan/models/pandal.dart';
 import 'package:durga_darshan/services/external_maps.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:latlong2/latlong.dart';
 
 void main() {
   // Synthetic test fixture, not real pandal data.
@@ -251,5 +252,33 @@ void main() {
       );
       expect(link.primary.path, '0,0');
     });
+  });
+
+  test('the web app on an iPhone opens Apple Maps', () {
+    final verified = Pandal(
+      id: 'test-iphone',
+      name: 'Test Pandal',
+      area: 'Test Area',
+      city: 'Ahmedabad',
+      latitude: 23.0225,
+      longitude: 72.5714,
+      verificationStatus: VerificationStatus.verified,
+    );
+    for (final link in [
+      ExternalMaps.linkFor(verified, platform: TargetPlatform.iOS, isWeb: true),
+      ExternalMaps.searchFor(
+        'Test Pandal, Ahmedabad',
+        platform: TargetPlatform.iOS,
+        isWeb: true,
+      ),
+      ExternalMaps.directionsTo(
+        const LatLng(23.0225, 72.5714),
+        label: 'My parked vehicle',
+        platform: TargetPlatform.iOS,
+        isWeb: true,
+      ),
+    ]) {
+      expect(link.primary.host, 'maps.apple.com');
+    }
   });
 }

@@ -32,7 +32,8 @@ abstract final class ExternalMaps {
   ///
   /// * Android: a `geo:` URI, so the user's choice of maps app opens.
   /// * iOS: Apple Maps with the pandal as the destination.
-  /// * Web and desktop: the OpenStreetMap website.
+  /// * Web and desktop: the OpenStreetMap website (Apple Maps in a browser
+  ///   on an iPhone).
   ///
   /// Throws an [ArgumentError] unless the pandal has a verified location.
   static MapsLink linkFor(
@@ -50,9 +51,11 @@ abstract final class ExternalMaps {
     final lat = pandal.latitude!.toStringAsFixed(6);
     final lng = pandal.longitude!.toStringAsFixed(6);
     final web = openStreetMapUri(lat, lng);
-    if (isWeb) return MapsLink(web);
+    final target = platform ?? defaultTargetPlatform;
+    // On an iPhone the web app opens Apple Maps, as the iOS app does.
+    if (isWeb && target != TargetPlatform.iOS) return MapsLink(web);
 
-    switch (platform ?? defaultTargetPlatform) {
+    switch (target) {
       case TargetPlatform.android:
         // Parentheses would end the geo: label early.
         final label = pandal.name.replaceAll(RegExp(r'[()]'), '');
@@ -106,7 +109,8 @@ abstract final class ExternalMaps {
   /// * Android: a `geo:` search, so the user's choice of maps app opens.
   /// * iOS: an Apple Maps search.
   /// * Web and desktop: a Google Maps search, which copes better with
-  ///   landmark-style addresses than openstreetmap.org's search.
+  ///   landmark-style addresses than openstreetmap.org's search (Apple Maps
+  ///   in a browser on an iPhone).
   static MapsLink searchFor(
     String query, {
     TargetPlatform? platform,
@@ -116,9 +120,11 @@ abstract final class ExternalMaps {
       'api': '1',
       'query': query,
     });
-    if (isWeb) return MapsLink(web);
+    final target = platform ?? defaultTargetPlatform;
+    // On an iPhone the web app opens Apple Maps, as the iOS app does.
+    if (isWeb && target != TargetPlatform.iOS) return MapsLink(web);
 
-    switch (platform ?? defaultTargetPlatform) {
+    switch (target) {
       case TargetPlatform.android:
         return MapsLink(
           Uri.parse('geo:0,0?q=${Uri.encodeComponent(query)}'),
@@ -141,7 +147,8 @@ abstract final class ExternalMaps {
   /// * Android, web and desktop: Google Maps directions, which open the
   ///   Google Maps app when it's installed and its website otherwise. On
   ///   Android, a `geo:` link to the spot is the fallback.
-  /// * iOS: Apple Maps directions, with the Google Maps website as fallback.
+  /// * iOS, including the web app on an iPhone: Apple Maps directions, with
+  ///   the Google Maps website as fallback.
   static MapsLink directionsTo(
     LatLng destination, {
     required String label,
@@ -155,9 +162,11 @@ abstract final class ExternalMaps {
       'destination': '$lat,$lng',
       'travelmode': 'walking',
     });
-    if (isWeb) return MapsLink(google);
+    final target = platform ?? defaultTargetPlatform;
+    // On an iPhone the web app opens Apple Maps, as the iOS app does.
+    if (isWeb && target != TargetPlatform.iOS) return MapsLink(google);
 
-    switch (platform ?? defaultTargetPlatform) {
+    switch (target) {
       case TargetPlatform.android:
         // Parentheses would end the geo: label early.
         final name = label.replaceAll(RegExp(r'[()]'), '');
