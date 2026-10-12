@@ -12,6 +12,7 @@ import '../widgets/area_shortcuts.dart';
 import '../widgets/darshan_progress_card.dart';
 import '../widgets/explore_map_card.dart';
 import '../widgets/festive_hero.dart';
+import '../widgets/install_hint_card.dart';
 import '../widgets/motion/entrance.dart';
 import '../widgets/motion/first_reveal.dart';
 import '../widgets/motion/press_scale.dart';
@@ -90,6 +91,9 @@ class _HomeScreenState extends State<HomeScreen> with FirstReveal {
           SliverToBoxAdapter(
             child: Column(
               children: [
+                ContentWidth(
+                  child: InstallHintCard(controller: scope.installHint),
+                ),
                 _Section(
                   title: 'Explore Pandals',
                   onSeeAll: widget.onSeeAll,

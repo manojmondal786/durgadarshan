@@ -349,6 +349,28 @@ status, so new coordinates must be verified again.
   to work on a file that fails its integrity checks.
 - Only the chosen pandal changes; every other field and record is kept as is.
 
+## Web app for iPhone
+
+iPhones can't install the APK, so iPhone users get the web version, hosted
+on GitHub Pages at https://manojmondal786.github.io/durgadarshan/ and added
+to the Home Screen (Share → Add to Home Screen). iPhones never show an
+install popup for websites, so when the web version is open in a phone's
+browser, Home shows its own banner: the Add to Home Screen steps on an
+iPhone, or a download of the Android app on Android. It hides once the app
+is opened from the Home Screen, or after it is closed.
+
+On the web the Nearby alerts card is left out (web apps can't follow the
+user's location in the background), and on an iPhone map links open Apple
+Maps.
+
+To publish an update, build with the site's path and replace the
+`gh-pages` branch's files with `build/web`:
+
+```sh
+flutter build web --release --base-href /durgadarshan/
+touch build/web/.nojekyll
+```
+
 ## Release signing
 
 Release builds are signed with the key described in `android/key.properties`,

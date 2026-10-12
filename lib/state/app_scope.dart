@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../data/pandal_repository.dart';
 import 'browse_controller.dart';
 import 'favourites_controller.dart';
+import 'install_hint_controller.dart';
 import 'nearby_alerts_controller.dart';
 import 'parking_controller.dart';
 import 'visits_controller.dart';
@@ -16,6 +17,7 @@ class AppScope extends InheritedWidget {
     required this.favourites,
     required this.visits,
     required this.parking,
+    required this.installHint,
     required this.browse,
     required this.nearbyAlerts,
     required super.child,
@@ -25,6 +27,7 @@ class AppScope extends InheritedWidget {
   final FavouritesController favourites;
   final VisitsController visits;
   final ParkingController parking;
+  final InstallHintController installHint;
   final BrowseController browse;
   final NearbyAlertsController nearbyAlerts;
 
@@ -40,6 +43,7 @@ class AppScope extends InheritedWidget {
       favourites != oldWidget.favourites ||
       visits != oldWidget.visits ||
       parking != oldWidget.parking ||
+      installHint != oldWidget.installHint ||
       browse != oldWidget.browse ||
       nearbyAlerts != oldWidget.nearbyAlerts;
 }

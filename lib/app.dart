@@ -11,10 +11,12 @@ import 'screens/pandal_details_screen.dart';
 import 'screens/startup_screen.dart';
 import 'services/alert_presenter.dart';
 import 'services/app_storage.dart';
+import 'services/install_target.dart';
 import 'services/location_source.dart';
 import 'state/app_scope.dart';
 import 'state/browse_controller.dart';
 import 'state/favourites_controller.dart';
+import 'state/install_hint_controller.dart';
 import 'state/nearby_alerts_controller.dart';
 import 'state/parking_controller.dart';
 import 'state/visits_controller.dart';
@@ -29,6 +31,7 @@ class DurgaDarshanApp extends StatefulWidget {
     this.mapTileProvider,
     this.locationSource,
     this.alertPresenter,
+    this.detectInstall = detectInstallTarget,
     this.splashDuration = AppMotion.splashMinimum,
   });
 
@@ -46,6 +49,10 @@ class DurgaDarshanApp extends StatefulWidget {
   /// Overrides for tests; default to the device's location and notifications.
   final LocationSource? locationSource;
   final AlertPresenter? alertPresenter;
+
+  /// What the web version's install banner suggests; see
+  /// [detectInstallTarget]. Replaced in tests.
+  final InstallTarget? Function() detectInstall;
 
   /// Least time the splash stays up while the bundled list loads. Not used
   /// when [repository] is given.
@@ -69,6 +76,7 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
   FavouritesController? _favourites;
   VisitsController? _visits;
   ParkingController? _parking;
+  InstallHintController? _installHint;
   NearbyAlertsController? _nearbyAlerts;
 
   Object? _loadError;
@@ -167,6 +175,10 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
     _favourites = favourites;
     _visits = visits;
     _parking = parking;
+    _installHint = InstallHintController(
+      target: widget.detectInstall(),
+      storage: storage,
+    );
     _nearbyAlerts = NearbyAlertsController(
       pandals: repository.mappable,
       location: location,
@@ -206,6 +218,7 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
     _favourites?.dispose();
     _visits?.dispose();
     _parking?.dispose();
+    _installHint?.dispose();
     _browse.dispose();
     _nearbyAlerts?.dispose();
     super.dispose();
@@ -217,6 +230,7 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
     final favourites = _favourites;
     final visits = _visits;
     final parking = _parking;
+    final installHint = _installHint;
     final nearbyAlerts = _nearbyAlerts;
     final loaded = repository != null && favourites != null;
     final Widget home;
@@ -242,6 +256,7 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
             favourites == null ||
             visits == null ||
             parking == null ||
+            installHint == null ||
             nearbyAlerts == null) {
           return child!;
         }
@@ -250,6 +265,7 @@ class _DurgaDarshanAppState extends State<DurgaDarshanApp> {
           favourites: favourites,
           visits: visits,
           parking: parking,
+          installHint: installHint,
           browse: _browse,
           nearbyAlerts: nearbyAlerts,
           child: child!,

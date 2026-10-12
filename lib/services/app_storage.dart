@@ -37,6 +37,10 @@ abstract interface class AppStorage {
   String? get parkingSpotRecord;
   Future<void> saveParkingSpotRecord(String? record);
 
+  /// Whether the user closed the web version's install banner.
+  bool get installHintDismissed;
+  Future<void> saveInstallHintDismissed(bool dismissed);
+
   /// Whether the user left nearby alerts switched on.
   bool get nearbyAlertsOn;
   Future<void> saveNearbyAlertsOn(bool on);
@@ -53,6 +57,7 @@ class MemoryStorage implements AppStorage {
     List<String> favouriteIds = const [],
     List<String> visitRecords = const [],
     this.parkingSpotRecord,
+    this.installHintDismissed = false,
     this.nearbyAlertsOn = false,
     List<String> alertedPandals = const [],
   }) : favouriteIds = List.unmodifiable(favouriteIds),
@@ -67,6 +72,9 @@ class MemoryStorage implements AppStorage {
 
   @override
   String? parkingSpotRecord;
+
+  @override
+  bool installHintDismissed;
 
   @override
   bool nearbyAlertsOn;
@@ -87,6 +95,10 @@ class MemoryStorage implements AppStorage {
       parkingSpotRecord = record;
 
   @override
+  Future<void> saveInstallHintDismissed(bool dismissed) async =>
+      installHintDismissed = dismissed;
+
+  @override
   Future<void> saveNearbyAlertsOn(bool on) async => nearbyAlertsOn = on;
 
   @override
@@ -104,9 +116,17 @@ class _DeviceStorage implements AppStorage {
   static const _favourites = 'favouriteIds';
   static const _visits = 'visits';
   static const _parking = 'parkingSpot';
+  static const _installHint = 'installHintDismissed';
   static const _alertsOn = 'nearbyAlertsOn';
   static const _alerted = 'alertedPandals';
-  static const keys = {_favourites, _visits, _parking, _alertsOn, _alerted};
+  static const keys = {
+    _favourites,
+    _visits,
+    _parking,
+    _installHint,
+    _alertsOn,
+    _alerted,
+  };
 
   @override
   List<String> get favouriteIds =>
@@ -118,6 +138,9 @@ class _DeviceStorage implements AppStorage {
 
   @override
   String? get parkingSpotRecord => _preferences.getString(_parking);
+
+  @override
+  bool get installHintDismissed => _preferences.getBool(_installHint) ?? false;
 
   @override
   bool get nearbyAlertsOn => _preferences.getBool(_alertsOn) ?? false;
@@ -140,6 +163,10 @@ class _DeviceStorage implements AppStorage {
         ? _preferences.remove(_parking)
         : _preferences.setString(_parking, record),
   );
+
+  @override
+  Future<void> saveInstallHintDismissed(bool dismissed) =>
+      _save(() => _preferences.setBool(_installHint, dismissed));
 
   @override
   Future<void> saveNearbyAlertsOn(bool on) =>
