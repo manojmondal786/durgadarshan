@@ -49,3 +49,6 @@ app.*.map.json
 
 # Local backups written by tool/verify_pandals.dart
 /assets/data/backups/
+
+# Release APKs and QR posters built for sharing
+/dist/
