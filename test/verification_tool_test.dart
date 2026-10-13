@@ -9,6 +9,27 @@ import '../tool/src/data_file.dart';
 import '../tool/src/records.dart';
 import 'helpers/test_data.dart';
 
+/// [posterDocument] with poster flags on #5, #15 and #17, like the ones the
+/// earlier 2026 list carried. The final list flags no entry, so the flag
+/// handling is tested on these.
+JsonMap flaggedDocument() {
+  final document = posterDocument();
+  void flag(int n, String status, List<String> cautions) {
+    final record = pandalsOf(document)
+        .firstWhere((r) => r['posterNumber'] == n);
+    record['verificationStatus'] = status;
+    record['posterCautions'] = cautions;
+  }
+
+  flag(5, statusNeedsCheck, ['The poster marks this entry "(Need to check)".']);
+  flag(15, statusConflicting, ['The poster lists two addresses.']);
+  flag(17, statusConflicting, [
+    'The poster gives two possible venues.',
+    'The poster marks this entry "(Need to confirm location)".',
+  ]);
+  return document;
+}
+
 /// Feeds scripted answers and records everything printed.
 class ScriptedConsole implements Console {
   ScriptedConsole([List<String> inputs = const []]) : _inputs = [...inputs];
@@ -134,7 +155,7 @@ void main() {
     late JsonMap flagged;
 
     setUp(() {
-      flagged = pandalsOf(posterDocument())
+      flagged = pandalsOf(flaggedDocument())
           .firstWhere((r) => r['posterNumber'] == 5);
     });
 
@@ -310,7 +331,7 @@ void main() {
     setUp(() {
       dir = Directory.systemTemp.createTempSync('pandal_verification_');
       path = '${dir.path}${Platform.pathSeparator}pandals.json';
-      original = encodeDocument(posterDocument());
+      original = encodeDocument(flaggedDocument());
       File(path).writeAsStringSync(original);
     });
 
@@ -356,14 +377,14 @@ void main() {
       final result = run(['list']);
 
       expect(result.code, exitOk);
-      for (var n = 1; n <= 25; n++) {
+      for (var n = 1; n <= 24; n++) {
         expect(result.output, contains('#${'$n'.padLeft(2, '0')}  '));
       }
-      expect(result.output, contains('Ramkrishna Seva kendra'));
+      expect(result.output, contains('All Gujarat Resurgent Trust'));
       expect(result.output, contains('needs check'));
       expect(result.output, contains('unclear location'));
       expect(result.output, contains('(Need to check)'));
-      expect(result.output, contains('Garden between Shoppers plaza'));
+      expect(result.output, contains('Adani Shantigram Township'));
       expect(result.output, contains('Coordinates  none'));
     });
 
@@ -590,11 +611,11 @@ void main() {
       expect(result.code, exitOk);
       expect(result.output, contains('VERIFIED (1)'));
       expect(result.output, contains('CANDIDATES (1)'));
-      expect(result.output, contains('UNRESOLVED (23)'));
+      expect(result.output, contains('UNRESOLVED (22)'));
       expect(result.output, contains('poster flag: needs check'));
       expect(
         result.output,
-        contains('1 verified · 1 candidate(s) · 23 unresolved'),
+        contains('1 verified · 1 candidate(s) · 22 unresolved'),
       );
     });
 

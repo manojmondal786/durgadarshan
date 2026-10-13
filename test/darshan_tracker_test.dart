@@ -79,7 +79,7 @@ void main() {
     final pandal = repository.pandals.first;
     await pumpApp(tester, storage: storage);
     expect(
-      find.text('Mark pandals as visited and track all 25'),
+      find.text('Mark pandals as visited and track all 24'),
       findsOneWidget,
     );
 
@@ -122,7 +122,7 @@ void main() {
     );
 
     await openTab(tester, 'Home');
-    expect(find.text('1 of 25 visited · 24 to go'), findsOneWidget);
+    expect(find.text('1 of 24 visited · 23 to go'), findsOneWidget);
   });
 
   testWidgets('the tracker lists visits, newest first, and what is left', (
@@ -138,10 +138,10 @@ void main() {
         ],
       ),
     );
-    expect(find.text('2 of 25 visited · 23 to go'), findsOneWidget);
+    expect(find.text('2 of 24 visited · 22 to go'), findsOneWidget);
 
     await openTracker(tester);
-    expect(find.text('2 of 25 pandals visited'), findsOneWidget);
+    expect(find.text('2 of 24 pandals visited'), findsOneWidget);
     expect(find.text('Visited · 2'), findsOneWidget);
     expect(find.text('Grand pandal'), findsOneWidget);
     expect(
@@ -150,7 +150,7 @@ void main() {
       reason: 'most recent visit first',
     );
 
-    await tapVisible(tester, find.text('Still to visit · 23'));
+    await tapVisible(tester, find.text('Still to visit · 22'));
     await tapVisible(tester, find.text(third.name));
     expect(find.text('Been here?'), findsOneWidget);
   });
@@ -217,10 +217,10 @@ void main() {
       ],
     );
     await pumpApp(tester, storage: storage);
-    expect(find.text('1 of 25 visited · 24 to go'), findsOneWidget);
+    expect(find.text('1 of 24 visited · 23 to go'), findsOneWidget);
 
     await tester.pumpWidget(const SizedBox());
     await pumpApp(tester, storage: storage);
-    expect(find.text('1 of 25 visited · 24 to go'), findsOneWidget);
+    expect(find.text('1 of 24 visited · 23 to go'), findsOneWidget);
   });
 }

@@ -3,9 +3,10 @@
 A personal-use Flutter app for visiting Durga Puja pandals in Ahmedabad and
 nearby areas.
 
-**Status:** the app lists the 25 pandals from the *List of Ahmedabad Durga Puja
-2026* poster (`assets/reference/pandal_list.jpg`), bundled as
-`assets/data/pandals.json`. All 25 are pinned on an OpenStreetMap map, and
+**Status:** the app lists the 24 pandals from the final *List of Ahmedabad Durga
+Puja 2026* poster (`assets/reference/pandal_list_final.jpg`; it replaced the
+earlier `assets/reference/pandal_list.jpg` on 2026-10-13), bundled as
+`assets/data/pandals.json`. All 24 are pinned on an OpenStreetMap map, and
 optional notifications tell you when a pandal is within 3 km while the app is
 open or minimised.
 
@@ -54,7 +55,7 @@ side).
   embers) are in `lib/widgets/motion/`. Every animation runs once and stops,
   and all of it is skipped when the system's "remove animations" setting is
   on.
-- Mockup sample data is not used. The app shows the real 25 pandals, no
+- Mockup sample data is not used. The app shows the real 24 pandals, no
   verification badges, and the real map pins.
 
 ## Run
@@ -297,7 +298,7 @@ Run it from the project root:
 
 ```sh
 dart run tool/verify_pandals.dart help        # list of commands
-dart run tool/verify_pandals.dart list        # all 25: number, name, area, address, status, notes, coordinates
+dart run tool/verify_pandals.dart list        # all 24: number, name, area, address, status, notes, coordinates
 dart run tool/verify_pandals.dart review      # verified / candidate / unresolved summary
 dart run tool/verify_pandals.dart show 5      # one pandal in full, with a map link to check by eye
 dart run tool/verify_pandals.dart set 5       # record candidate coordinates for poster #5

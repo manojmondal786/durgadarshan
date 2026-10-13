@@ -10,8 +10,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../tool/src/records.dart' as tool;
 
-/// Checks the bundled data transcribed from the 2026 poster. These rules hold
-/// however many locations have been verified since.
+/// Checks the bundled data transcribed from the final 2026 list. These rules
+/// hold however many locations have been verified since.
 void main() {
   late Map<String, Object?> document;
   late List<Map<String, Object?>> records;
@@ -24,19 +24,57 @@ void main() {
     repository = PandalRepository.fromJsonString(source);
   });
 
-  test('contains all 25 poster entries with unique, stable ids', () {
+  test('contains all 24 pandals of the final list with unique ids', () {
     final pandals = repository.pandals;
-    expect(pandals, hasLength(25));
+    expect(pandals, hasLength(24));
 
     final ids = pandals.map((p) => p.id).toList();
-    expect(ids.toSet(), hasLength(25));
+    expect(ids.toSet(), hasLength(24));
     for (final id in ids) {
       expect(id, matches(RegExp(r'^[a-z0-9]+(-[a-z0-9]+)*$')), reason: id);
     }
 
     expect(pandals.map((p) => p.posterNumber), [
-      for (var n = 1; n <= 25; n++) n,
+      for (var n = 1; n <= 24; n++) n,
     ]);
+  });
+
+  test('pandals carried over from the earlier list keep their ids', () {
+    // Saved favourites and visits refer to these ids.
+    const carriedOver = {
+      'airports-authority-community-hall': 16,
+      'naroda-kalibari': 5,
+      'payal-upvan-party-plot': 11,
+      'vaibhav-hall': 10,
+      'bengal-youth-cultural-association': 19,
+      'adinath-nagar-indrapark-society': 15,
+      'adinath-nagar-jadeshwar-mahadev-mandir': 14,
+      'kankaria-open-air-theater': 9,
+      'railway-colony-ground-sabarmati': 3,
+      'chandkheda-bengal-cultural-association': 12,
+      'adani-shantigram': 8,
+      'savvy-swaraj-durgotsav': 7,
+      'sola': 18,
+      'karnavati-bangiya-parishad': 4,
+      'ahmedabad-kalibari': 2,
+      'shantaram-community-hall': 17,
+      'chatterjee-barir-pujo': 13,
+      'gandhinagar-sector-22': 20,
+      'shakti-dwar-charitable-trust': 21,
+      'bavla-durga-puja-association': 6,
+      'sanand-durga-puja': 24,
+    };
+    carriedOver.forEach((id, number) {
+      expect(repository.byId(id)?.posterNumber, number, reason: id);
+    });
+    for (final dropped in [
+      'ramkrishna-seva-kendra',
+      'mukhi-party-plot',
+      'palkhi-upvan-party-plot',
+      'durga-ground-vatva',
+    ]) {
+      expect(repository.byId(dropped), isNull, reason: dropped);
+    }
   });
 
   test('every record spells out every documented field', () {
@@ -110,46 +148,38 @@ void main() {
     }
   });
 
-  test('poster flags are kept, including after verification', () {
-    const posterFlags = {
-      'ramkrishna-seva-kendra': 'needs_check',
-      'mukhi-party-plot': 'needs_check',
-      'savvy-swaraj-durgotsav': 'conflicting',
-      'karnavati-bangiya-parishad': 'conflicting',
-      'gandhinagar-sector-22': 'conflicting',
-    };
+  test('the final list flags no entry and gives one venue for each', () {
     for (final record in records) {
       final id = record['id'];
-      expect(
-        tool.originalStatusOf(record),
-        posterFlags[id] ?? 'unverified',
-        reason: '$id',
-      );
-      if (posterFlags.containsKey(id)) {
-        // Shown as notes, or kept hidden as poster cautions.
-        expect(
-          [...?record['notes'] as List?, ...?record['posterCautions'] as List?],
-          isNotEmpty,
-          reason: '$id',
-        );
-      }
+      expect(tool.originalStatusOf(record), 'unverified', reason: '$id');
+      expect(record['posterCautions'], isNull, reason: '$id');
+      expect(record['posterAddress'], isNull, reason: '$id');
     }
-    final kalibari = records.firstWhere((r) => r['id'] == 'ahmedabad-kalibari');
-    expect([
-      ...?kalibari['notes'] as List?,
-      ...?kalibari['posterCautions'] as List?,
-    ], contains(contains('updated location')));
   });
 
-  test('caution notes are kept in the data but out of the app', () {
-    for (final record in records) {
-      final cautions = record['posterCautions'] as List?;
-      if (cautions == null) continue;
-      expect(cautions, isNotEmpty, reason: '${record['id']}');
-      final shown = repository.byId(record['id']! as String)!.notes;
-      for (final caution in cautions) {
-        expect(shown, isNot(contains(caution)), reason: '${record['id']}');
-      }
+  test('corrections to the printed list are explained in the data', () {
+    final corrected = {
+      for (final record in records)
+        if (record['transcriptionNotes'] case final List notes)
+          record['id']: notes,
+    };
+    expect(corrected.keys, [
+      'bavla-durga-puja-association',
+      'adani-shantigram',
+      'vaibhav-hall',
+      'adinath-nagar-jadeshwar-mahadev-mandir',
+      'adinath-nagar-indrapark-society',
+      'bangiyo-antariksha-sanskriti-samiti',
+      'sanand-durga-puja',
+    ]);
+    for (final notes in corrected.values) {
+      expect(notes, everyElement(isNotEmpty));
+    }
+    // The list prints Sanand twice; it is listed once.
+    expect(repository.pandals.where((p) => p.area == 'Sanand'), hasLength(1));
+    // Notes on the transcription stay out of the app.
+    for (final pandal in repository.pandals) {
+      expect(pandal.notes.join(), isNot(contains('final list')));
     }
   });
 
@@ -161,21 +191,19 @@ void main() {
               'area')
             record['id'],
       ];
-      expect(areaIds, hasLength(18));
+      expect(areaIds, hasLength(19));
       expect(
         repository.pandals.where((p) => p.pinShowsAreaOnly).map((p) => p.id),
         areaIds,
       );
     });
 
-    test('the eight entries the poster doubts ask visitors to check', () {
-      final flagged = repository.pandals.where((p) => p.venueNeedsChecking);
-      expect(flagged.map((p) => p.posterNumber), [4, 5, 6, 15, 16, 17, 18, 21]);
-
-      final withVenues = repository.pandals.where(
-        (p) => p.listedVenues.isNotEmpty,
+    test('no entry asks visitors to check its venue', () {
+      expect(repository.pandals.where((p) => p.venueNeedsChecking), isEmpty);
+      expect(
+        repository.pandals.where((p) => p.listedVenues.isNotEmpty),
+        isEmpty,
       );
-      expect(withVenues.map((p) => p.posterNumber), [15, 17]);
     });
 
     test('address captions use friendly wording, not poster cautions', () {
@@ -186,15 +214,35 @@ void main() {
       const checkHint =
           'Venue as listed by the organisers. Please check before you travel.';
 
-      expect(
-        caption('karnavati-bangiya-parishad'),
-        'Listed venues: N.K. Farm, Thaltej or Govardhan Party Plot, '
-        'Thaltej.\n$areaHint',
-      );
-      expect(caption('mukhi-party-plot'), '$checkHint\n$areaHint');
-      expect(caption('ahmedabad-kalibari'), checkHint);
+      expect(caption('karnavati-bangiya-parishad'), areaHint);
       expect(caption('naroda-kalibari'), areaHint);
-      expect(caption('airports-authority-community-hall'), isNull);
+      expect(caption('ahmedabad-kalibari'), isNull);
+      expect(caption('vaibhav-hall'), isNull);
+
+      // Entries the list doubts, or gives two venues for, still get a hint.
+      String? hint({
+        List<String> listedVenues = const [],
+        bool venueNeedsChecking = false,
+      }) => PandalDetailsScreen.addressCaption(
+        Pandal(
+          id: 'p',
+          name: 'P',
+          area: 'A',
+          city: 'C',
+          latitude: 23.03,
+          longitude: 72.58,
+          verificationStatus: VerificationStatus.verified,
+          pinPrecision: PinPrecision.area,
+          listedVenues: listedVenues,
+          venueNeedsChecking: venueNeedsChecking,
+        ),
+      );
+      expect(hint(), areaHint);
+      expect(hint(venueNeedsChecking: true), '$checkHint\n$areaHint');
+      expect(
+        hint(listedVenues: ['First Hall', 'Second Ground']),
+        'Listed venues: First Hall or Second Ground.\n$areaHint',
+      );
 
       final hidden = RegExp(
         r'verif|need(s)? (to )?check|updated location|brst|poster',
@@ -230,8 +278,8 @@ void main() {
       final descriptions = [
         for (final pandal in repository.pandals) pandal.description,
       ];
-      expect(descriptions, hasLength(25));
-      expect(descriptions.toSet(), hasLength(25));
+      expect(descriptions, hasLength(24));
+      expect(descriptions.toSet(), hasLength(24));
       for (final (index, description) in descriptions.indexed) {
         final id = repository.pandals[index].id;
         expect(description, isNotNull, reason: id);
@@ -242,7 +290,7 @@ void main() {
 
     test('never surface hidden poster cautions or status wording', () {
       final hidden = RegExp(
-        r'verif|need(s)? check|unclear|BRTS|Jagatpur',
+        r'verif|need(s)? check|unclear|BRTS',
         caseSensitive: false,
       );
       for (final pandal in repository.pandals) {
@@ -299,7 +347,7 @@ void main() {
       final tentative = repository.pandals.where(
         (p) => p.planningCutoff != null,
       );
-      expect(tentative, hasLength(24));
+      expect(tentative, hasLength(23));
       for (final pandal in tentative) {
         expect(pandal.planningCutoff!.isMidnight, isTrue);
         expect(pandal.schedule, isNull);

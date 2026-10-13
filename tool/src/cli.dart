@@ -25,7 +25,7 @@ Commands:
   review        Verified, candidate and unresolved pandals at a glance.
   help          Show this message.
 
-<n> is the pandal's number on the poster (1-25).
+<n> is the pandal's number on the poster (1-24).
 Default file: $defaultDataPath (run from the project root).''';
 
 /// Line-based input and output, so tests can script a session.

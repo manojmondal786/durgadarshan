@@ -46,41 +46,41 @@ void main() {
 
   group('search', () {
     test('matches names, areas and addresses case-insensitively', () {
-      expect(numbers(repository.search(query: 'KALIBARI')), [2, 18]);
-      expect(numbers(repository.search(query: 'maninagar')), [3, 5]);
-      expect(numbers(repository.search(query: 'bengal')), [8, 13]);
-      expect(numbers(repository.search(query: '382415')), [9, 10]);
-      expect(numbers(repository.search(query: 'Gandhinagar')), [21]);
+      expect(numbers(repository.search(query: 'KALIBARI')), [2]);
+      expect(numbers(repository.search(query: 'maninagar')), [11]);
+      expect(numbers(repository.search(query: 'bengal')), [8, 12, 18, 19, 22]);
+      expect(numbers(repository.search(query: '382415')), [15]);
+      expect(numbers(repository.search(query: 'Gandhinagar')), [20]);
     });
 
     test('requires every word to match', () {
-      expect(numbers(repository.search(query: 'adinath jadeshwar')), [10]);
-      expect(numbers(repository.search(query: '  sector   28 ')), [21]);
+      expect(numbers(repository.search(query: 'adinath jadeshwar')), [14]);
+      expect(numbers(repository.search(query: '  sector   22 ')), [20]);
       expect(repository.search(query: 'kalibari sanand'), isEmpty);
     });
 
     test('returns everything for a blank query and nothing for no match', () {
-      expect(repository.search(), hasLength(25));
-      expect(repository.search(query: '   '), hasLength(25));
+      expect(repository.search(), hasLength(24));
+      expect(repository.search(query: '   '), hasLength(24));
       expect(repository.search(query: 'no such pandal'), isEmpty);
     });
   });
 
   group('filters', () {
     test('narrow by area', () {
-      expect(numbers(repository.search(area: 'Ghodasar')), [4, 22]);
-      expect(numbers(repository.search(area: 'Odhav')), [9, 10]);
+      expect(numbers(repository.search(area: 'Jagatpur')), [7, 22]);
+      expect(numbers(repository.search(area: 'Odhav')), [14, 15]);
       expect(numbers(repository.search(area: 'Odhav', query: 'indrapark')), [
-        9,
+        15,
       ]);
       expect(repository.search(area: 'Nowhere'), isEmpty);
     });
 
     test('narrow to favourite ids', () {
       const favourites = {'sanand-durga-puja', 'vaibhav-hall'};
-      expect(numbers(repository.search(onlyIds: favourites)), [4, 25]);
+      expect(numbers(repository.search(onlyIds: favourites)), [10, 24]);
       expect(
-        repository.search(onlyIds: favourites, area: 'Ghodasar').single.id,
+        repository.search(onlyIds: favourites, area: 'Isanpur').single.id,
         'vaibhav-hall',
       );
       expect(repository.search(onlyIds: const {}), isEmpty);
@@ -95,7 +95,7 @@ void main() {
 
     test('areas by pandal count put the busiest areas first', () {
       final areas = repository.areasByPandalCount;
-      expect(areas.take(4), ['Ghodasar', 'Maninagar', 'Odhav', 'Airport Road']);
+      expect(areas.take(4), ['Jagatpur', 'Odhav', 'Airport', 'Akhbarnagar']);
       expect(areas.toSet(), repository.areas.toSet());
     });
   });
@@ -115,7 +115,7 @@ void main() {
   });
 
   test('byId finds pandals and returns null for unknown ids', () {
-    expect(repository.byId('sola')!.posterNumber, 16);
+    expect(repository.byId('sola')!.posterNumber, 18);
     expect(repository.byId('missing'), isNull);
   });
 }

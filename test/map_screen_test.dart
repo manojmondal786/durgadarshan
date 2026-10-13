@@ -17,7 +17,7 @@ import 'helpers/fake_tiles.dart';
 import 'helpers/test_data.dart';
 
 void main() {
-  // The 25 pandals with no map locations, as transcribed from the poster.
+  // The 24 pandals with no map locations, as transcribed from the poster.
   late PandalRepository poster;
   final realOpener = ExternalMaps.opener;
   late List<Uri> opened;

@@ -155,10 +155,7 @@ void main() {
 
     expect(find.text('Shubho Sharodiya'), findsOneWidget);
     expect(find.text('Explore Pandals'), findsOneWidget);
-    expect(
-      find.text('Airports Authority of India Community Hall'),
-      findsOneWidget,
-    );
+    expect(find.text('Gitanjali Durgotsav'), findsOneWidget);
     expect(find.textContaining(_anyVerificationWording), findsNothing);
     expect(
       find.text('Nearby pandal alerts', skipOffstage: false),
@@ -182,32 +179,32 @@ void main() {
   testWidgets('searching from Home opens the filtered list', (tester) async {
     await pumpApp(tester);
 
-    await tester.enterText(find.byType(TextField), 'kalibari');
+    await tester.enterText(find.byType(TextField), 'jagatpur');
     await tester.testTextInput.receiveAction(TextInputAction.search);
     await tester.pumpAndSettle();
 
     expect(find.text('All Pandals'), findsOneWidget);
     expect(find.text('2 pandals'), findsOneWidget);
-    expect(
-      find.text('Naroda kalibari, All Gujarat Resurgent Trust'),
-      findsOneWidget,
-    );
-    expect(find.text('Ahmedabad Kalibari pujo'), findsOneWidget);
+    expect(find.text('Savvy Swaraj Durgapuja'), findsOneWidget);
+    expect(find.text('Jagatpur Bengali Cultural Association'), findsOneWidget);
   });
 
   testWidgets('list filters by area and favourites', (tester) async {
     await pumpApp(tester);
     await openTab(tester, 'Pandals');
-    expect(find.text('25 pandals'), findsOneWidget);
+    expect(find.text('24 pandals'), findsOneWidget);
 
-    await tapChip(tester, 'Ghodasar');
+    await tapChip(tester, 'Odhav');
     expect(find.text('2 pandals'), findsOneWidget);
-    expect(find.text('Vaibhav hall'), findsOneWidget);
-    expect(find.text('Shakti dwar charitable trust'), findsOneWidget);
+    expect(
+      find.text('Adinath Nagar - Jadeshwar Mahadev Mandir'),
+      findsOneWidget,
+    );
+    expect(find.text('Adinath Nagar - Indrapark Society'), findsOneWidget);
 
     await tester.tap(find.text('Clear filters').first);
     await tester.pumpAndSettle();
-    expect(find.text('25 pandals'), findsOneWidget);
+    expect(find.text('24 pandals'), findsOneWidget);
 
     await tapChip(tester, 'Favourites');
     expect(find.text('No favourites yet'), findsOneWidget);
@@ -217,10 +214,7 @@ void main() {
     await tester.pumpAndSettle();
     await tapChip(tester, 'Favourites');
     expect(find.text('1 pandal'), findsOneWidget);
-    expect(
-      find.text('Airports Authority of India Community Hall'),
-      findsOneWidget,
-    );
+    expect(find.text('Gitanjali Durgotsav'), findsOneWidget);
   });
 
   testWidgets(
@@ -229,7 +223,7 @@ void main() {
       await pumpApp(tester);
       await openDetailsFromList(tester, 'vaibhav');
 
-      expect(find.text('Ghodasar brst cross road, Ghodasar.'), findsOneWidget);
+      expect(find.text('Vaibhav Hall, Isanpur, Ahmedabad'), findsOneWidget);
       expect(find.text(VisitingHoursCard.estimatedTag), findsOneWidget);
       expect(
         find.text('Until 12:00 AM (Midnight) — Tentative', findRichText: true),
@@ -238,15 +232,10 @@ void main() {
       expect(find.text(VisitingHoursCard.cutoffDisclaimer), findsOneWidget);
       expect(find.text('Not announced yet'), findsNothing);
       expect(find.text(AboutPandalCard.title), findsOneWidget);
-      expect(
-        find.textContaining('Vaibhav Hall, by the Ghodasar'),
-        findsOneWidget,
-      );
+      expect(find.textContaining('Vaibhav Hall in Isanpur'), findsOneWidget);
       expect(find.textContaining('will be added'), findsNothing);
       expect(find.text('Representative image'), findsOneWidget);
-      // Poster caution notes are kept in the data but never shown.
       expect(find.text('Notes from the list'), findsNothing);
-      expect(find.textContaining('BRTS'), findsNothing);
       expect(find.textContaining(_anyVerificationWording), findsNothing);
 
       await tapVisible(tester, find.text('Add to Favourites'));
@@ -262,7 +251,7 @@ void main() {
       expect(find.textContaining(_anyVerificationWording), findsNothing);
       expect(
         find.text(
-          'Vaibhav hall, Ghodasar brst cross road, Ghodasar, Ahmedabad',
+          'Maa Durga Charitable Trust, Vaibhav Hall, Isanpur, Ahmedabad',
         ),
         findsOneWidget,
       );
@@ -280,7 +269,7 @@ void main() {
       expect(opened.single.path, '0,0');
       expect(
         opened.single.queryParameters['q'],
-        'Vaibhav hall, Ghodasar brst cross road, Ghodasar, Ahmedabad',
+        'Maa Durga Charitable Trust, Vaibhav Hall, Isanpur, Ahmedabad',
       );
 
       await tester.tap(find.byTooltip('Back'));
@@ -326,15 +315,20 @@ void main() {
     await tester.tap(find.byType(PandalListCard).first);
     await tester.pumpAndSettle();
 
-    expect(find.text('Savvy Swaraj, Gota, Ahmedabad.'), findsOneWidget);
-    // The second venue appears only as a friendly hint under the address.
     expect(
-      find.textContaining(
-        'Listed venues: Savvy Swaraj, Gota, Ahmedabad or Godrej Garden City '
-        'ground, behind police booth, Jagatpur.',
+      find.text(
+        'Revaaz Banquet, Savvy Swaraj Sports Complex, Near Godrej Garden '
+        'City, Jagatpur, Ahmedabad - 382470',
       ),
       findsOneWidget,
     );
+    // The only hint left says the pin marks the area, not the venue.
+    expect(
+      find.text('Map pin shows the area. Use the address to find the venue.'),
+      findsOneWidget,
+    );
+    expect(find.textContaining('Listed venues'), findsNothing);
+    expect(find.textContaining('check before you travel'), findsNothing);
     expect(find.text('Notes from the list'), findsNothing);
     expect(find.textContaining(_anyVerificationWording), findsNothing);
   });
@@ -567,10 +561,7 @@ void main() {
     await pumpApp(tester, storage: storage);
     await openTab(tester, 'Favourites');
     expect(find.text('1 saved pandal'), findsOneWidget);
-    expect(
-      find.text('Airports Authority of India Community Hall'),
-      findsOneWidget,
-    );
+    expect(find.text('Gitanjali Durgotsav'), findsOneWidget);
   });
 
   testWidgets('the Favourites tab lists hearted pandals', (tester) async {
@@ -593,10 +584,7 @@ void main() {
 
     await openTab(tester, 'Favourites');
     expect(find.text('1 saved pandal'), findsOneWidget);
-    expect(
-      find.text('Airports Authority of India Community Hall'),
-      findsOneWidget,
-    );
+    expect(find.text('Gitanjali Durgotsav'), findsOneWidget);
 
     await tester.tap(find.byTooltip('Remove from favourites'));
     await tester.pumpAndSettle();
