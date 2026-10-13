@@ -89,13 +89,13 @@ external links are recorded instead of launched.
 | `id` | Stable kebab-case id; favourites are keyed by it. |
 | `posterNumber` | Position on the source poster. |
 | `name`, `address` | Transcribed as printed. Alternative venues in `address` are separated by ` / `. |
-| `posterAddress` | The full poster address, when `address` holds only the chosen venue (#15, #17). |
+| `posterAddress` | The full poster address, when `address` holds only the chosen venue (#15, #17). The app lists both venues under the address. |
 | `area`, `city` | Area drives the filter chips. |
 | `latitude`, `longitude` | Both null, or both set. Only used once verified. |
 | `verificationStatus` | `verified`, `unverified`, `needs_check` or `conflicting`. |
 | `timings`, `description`, `image` | Null when unknown; the UI says so. |
 | `notes` | Notes shown in the app under "Notes from the list". |
-| `posterCautions` | The poster's caution remarks ("Need to check", two venues, …). Kept for reference, never shown in the app. |
+| `posterCautions` | The poster's caution remarks ("Need to check", two venues, …). The wording is never shown; any entry here adds "Venue as listed by the organisers. Please check before you travel." under the address. |
 | `verification` | Added by the verification tool; see below. |
 
 The `verification` object (absent until the tool first touches a pandal):
@@ -129,6 +129,14 @@ rather than editing coordinates by hand.
 *Open in Maps* hands the location to the user's own maps app: a `geo:` link on
 Android, Apple Maps on iOS, and openstreetmap.org on the web and desktop. The
 app never calls a routing or geocoding service.
+
+An `area` pin marks only the neighbourhood centre, which can be a kilometre or
+two from the venue. For those, *Open in Maps* asks the maps app to search for
+the pandal's name and address instead: near the pin on Android (`geo:lat,lng?q=`)
+and iOS (Apple Maps `sll`), and as a Google Maps search on the web and desktop.
+The details page adds "Map pin shows the area. Use the address to find the
+venue." under the address, and the map preview says "Pin shows the area, not
+the exact venue".
 
 ### Where the 25 pins came from
 

@@ -29,6 +29,29 @@ enum VerificationStatus {
   }
 }
 
+/// How closely a map pin matches the venue, when it came from an address
+/// lookup rather than being entered by hand.
+enum PinPrecision {
+  venue('venue'),
+  landmark('landmark'),
+  street('street'),
+
+  /// Only the neighbourhood or town centre, not the venue.
+  area('area');
+
+  const PinPrecision(this.jsonValue);
+
+  final String jsonValue;
+
+  static PinPrecision? fromJson(Object? value) {
+    if (value == null) return null;
+    for (final precision in values) {
+      if (precision.jsonValue == value) return precision;
+    }
+    throw FormatException('Unknown coordinatesPrecision: $value');
+  }
+}
+
 /// A Durga Puja pandal listed in the app.
 ///
 /// Unknown details are null rather than guessed. Coordinates are only used
@@ -45,6 +68,9 @@ class Pandal {
     this.latitude,
     this.longitude,
     this.verificationStatus = VerificationStatus.unverified,
+    this.pinPrecision,
+    this.listedVenues = const [],
+    this.venueNeedsChecking = false,
     this.timings,
     this.schedule,
     this.planningCutoff,
@@ -131,6 +157,23 @@ class Pandal {
       );
     }
 
+    final rawVerification = json['verification'];
+    if (rawVerification != null && rawVerification is! Map<String, Object?>) {
+      throw FormatException('Pandal "verification" must be an object', json);
+    }
+    final verification = rawVerification as Map<String, Object?>?;
+
+    // The full poster address, kept when `address` holds only one venue.
+    final posterAddress = optionalString('posterAddress');
+    final listedVenues = [
+      ...?posterAddress?.split(' / ').map(_trimEnd).where((v) => v.isNotEmpty),
+    ];
+
+    final rawCautions = json['posterCautions'];
+    if (rawCautions != null && rawCautions is! List) {
+      throw FormatException('Pandal "posterCautions" must be a list', json);
+    }
+
     final rawNotes = json['notes'];
     final notes = <String>[];
     if (rawNotes is List) {
@@ -156,6 +199,13 @@ class Pandal {
       verificationStatus: VerificationStatus.fromJson(
         json['verificationStatus'] ?? VerificationStatus.unverified.jsonValue,
       ),
+      pinPrecision: PinPrecision.fromJson(
+        verification?['coordinatesPrecision'],
+      ),
+      listedVenues: listedVenues.length > 1
+          ? List.unmodifiable(listedVenues)
+          : const [],
+      venueNeedsChecking: (rawCautions as List?)?.isNotEmpty ?? false,
       timings: optionalString('timings'),
       schedule: schedule,
       planningCutoff: planningCutoff,
@@ -179,6 +229,19 @@ class Pandal {
   final double? latitude;
   final double? longitude;
   final VerificationStatus verificationStatus;
+
+  /// How closely the pin matches the venue; null when it was entered by
+  /// hand or there is no pin.
+  final PinPrecision? pinPrecision;
+
+  /// Every venue the poster gives, when it gives more than one; otherwise
+  /// empty. [address] holds the one the pin is placed at.
+  final List<String> listedVenues;
+
+  /// The poster itself doubts this entry's venue, e.g. "(Need to check)".
+  /// Its wording stays in the data file; the app only asks visitors to
+  /// check before they travel.
+  final bool venueNeedsChecking;
 
   /// Darshan timings exactly as printed on the poster, null when it gives
   /// none. [schedule] holds the same hours in structured form.
@@ -213,4 +276,12 @@ class Pandal {
   /// True only when the location may be pinned on the map or opened in a
   /// maps app: explicitly verified, with valid coordinates.
   bool get hasVerifiedLocation => isLocationVerified && hasCoordinates;
+
+  /// The pin marks only the neighbourhood, so the address, not the pin,
+  /// leads to the venue.
+  bool get pinShowsAreaOnly =>
+      hasVerifiedLocation && pinPrecision == PinPrecision.area;
+
+  static String _trimEnd(String text) =>
+      text.trim().replaceFirst(RegExp(r'[\s.,]+$'), '');
 }

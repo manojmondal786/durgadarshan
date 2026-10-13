@@ -5,6 +5,7 @@ import 'package:durga_darshan/data/pandal_repository.dart';
 import 'package:durga_darshan/models/coordinates.dart';
 import 'package:durga_darshan/models/pandal.dart';
 import 'package:durga_darshan/models/visiting_hours.dart';
+import 'package:durga_darshan/screens/pandal_details_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../tool/src/records.dart' as tool;
@@ -150,6 +151,61 @@ void main() {
         expect(shown, isNot(contains(caution)), reason: '${record['id']}');
       }
     }
+  });
+
+  group('location hints', () {
+    test('only area-level pins are flagged as showing the area', () {
+      final areaIds = [
+        for (final record in records)
+          if ((record['verification'] as Map?)?['coordinatesPrecision'] ==
+              'area')
+            record['id'],
+      ];
+      expect(areaIds, hasLength(18));
+      expect(
+        repository.pandals.where((p) => p.pinShowsAreaOnly).map((p) => p.id),
+        areaIds,
+      );
+    });
+
+    test('the eight entries the poster doubts ask visitors to check', () {
+      final flagged = repository.pandals.where((p) => p.venueNeedsChecking);
+      expect(flagged.map((p) => p.posterNumber), [4, 5, 6, 15, 16, 17, 18, 21]);
+
+      final withVenues = repository.pandals.where(
+        (p) => p.listedVenues.isNotEmpty,
+      );
+      expect(withVenues.map((p) => p.posterNumber), [15, 17]);
+    });
+
+    test('address captions use friendly wording, not poster cautions', () {
+      String? caption(String id) =>
+          PandalDetailsScreen.addressCaption(repository.byId(id)!);
+      const areaHint =
+          'Map pin shows the area. Use the address to find the venue.';
+      const checkHint =
+          'Venue as listed by the organisers. Please check before you travel.';
+
+      expect(
+        caption('karnavati-bangiya-parishad'),
+        'Listed venues: N.K. Farm, Thaltej or Govardhan Party Plot, '
+        'Thaltej.\n$areaHint',
+      );
+      expect(caption('mukhi-party-plot'), '$checkHint\n$areaHint');
+      expect(caption('ahmedabad-kalibari'), checkHint);
+      expect(caption('naroda-kalibari'), areaHint);
+      expect(caption('airports-authority-community-hall'), isNull);
+
+      final hidden = RegExp(
+        r'verif|need(s)? (to )?check|updated location|brst|poster',
+        caseSensitive: false,
+      );
+      for (final pandal in repository.pandals) {
+        final text = PandalDetailsScreen.addressCaption(pandal);
+        if (text == null) continue;
+        expect(text, isNot(contains(hidden)), reason: pandal.id);
+      }
+    });
   });
 
   test('only timings printed on the poster are filled in', () {

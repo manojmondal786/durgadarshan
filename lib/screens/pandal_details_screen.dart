@@ -33,6 +33,23 @@ class PandalDetailsScreen extends StatelessWidget {
   static Future<void> open(BuildContext context, Pandal pandal) =>
       Navigator.of(context).push(route(pandal));
 
+  /// Gentle hints under the address where the poster doubts the venue or
+  /// the pin marks only the area. The poster's own caution wording stays in
+  /// the data file.
+  @visibleForTesting
+  static String? addressCaption(Pandal pandal) {
+    final venues = pandal.listedVenues;
+    final lines = [
+      if (venues.length > 1)
+        'Listed venues: ${venues.join(' or ')}.'
+      else if (pandal.venueNeedsChecking)
+        'Venue as listed by the organisers. Please check before you travel.',
+      if (pandal.pinShowsAreaOnly)
+        'Map pin shows the area. Use the address to find the venue.',
+    ];
+    return lines.isEmpty ? null : lines.join('\n');
+  }
+
   /// Lets each block of the page rise in shortly after the one above, as
   /// the page arrives. Spacers stay put.
   static List<Widget> _riseInTurn(List<Widget> children) {
@@ -122,6 +139,7 @@ class PandalDetailsScreen extends StatelessWidget {
                         label: 'Address',
                         value: address ?? 'Address not listed',
                         isPlaceholder: address == null,
+                        caption: addressCaption(pandal),
                       ),
                       const SizedBox(height: 8),
                       VisitingHoursCard(pandal: pandal),

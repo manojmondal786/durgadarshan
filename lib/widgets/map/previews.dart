@@ -82,6 +82,16 @@ class PandalMapPreview extends StatelessWidget {
                       icon: Icons.location_on_outlined,
                       text: pandal.area,
                     ),
+                    if (pandal.pinShowsAreaOnly)
+                      Padding(
+                        // Lines up with the area name, past its icon.
+                        padding: const EdgeInsets.only(left: 21, top: 2),
+                        child: Text(
+                          'Pin shows the area, not the exact venue',
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: AppColors.inkMuted),
+                        ),
+                      ),
                   ],
                 ),
               ),

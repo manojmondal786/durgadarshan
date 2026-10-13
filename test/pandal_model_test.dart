@@ -204,5 +204,71 @@ void main() {
       expect(verified.latitude, 23.03);
       expect(verified.longitude, 72.58);
     });
+
+    test('an area-level pin is flagged only once it is on the map', () {
+      Pandal pinned(Object? precision, {String status = 'verified'}) =>
+          Pandal.fromJson(
+            record({
+              'latitude': 23.03,
+              'longitude': 72.58,
+              'verificationStatus': status,
+              'verification': {'coordinatesPrecision': precision},
+            }),
+          );
+
+      expect(pinned('area').pinPrecision, PinPrecision.area);
+      expect(pinned('area').pinShowsAreaOnly, isTrue);
+      expect(pinned('area', status: 'unverified').pinShowsAreaOnly, isFalse);
+      for (final precision in ['venue', 'landmark', 'street', null]) {
+        expect(
+          pinned(precision).pinShowsAreaOnly,
+          isFalse,
+          reason: '$precision',
+        );
+      }
+      expect(Pandal.fromJson(record()).pinPrecision, isNull);
+      expect(() => pinned('exact'), throwsFormatException);
+    });
+  });
+
+  group('poster venue doubts', () {
+    test('lists every venue when the poster gives more than one', () {
+      final pandal = Pandal.fromJson(
+        record({
+          'address': 'First Hall, Test Area',
+          'posterAddress': 'First Hall, Test Area. / Second Ground, Test Area.',
+        }),
+      );
+
+      expect(pandal.listedVenues, [
+        'First Hall, Test Area',
+        'Second Ground, Test Area',
+      ]);
+    });
+
+    test('a single poster address lists no alternatives', () {
+      final pandal = Pandal.fromJson(
+        record({'posterAddress': 'Only Hall, Test Area.'}),
+      );
+      expect(pandal.listedVenues, isEmpty);
+      expect(Pandal.fromJson(record()).listedVenues, isEmpty);
+    });
+
+    test('poster cautions only set a flag', () {
+      expect(Pandal.fromJson(record()).venueNeedsChecking, isFalse);
+      expect(
+        Pandal.fromJson(record({'posterCautions': <String>[]}))
+            .venueNeedsChecking,
+        isFalse,
+      );
+
+      final flagged = Pandal.fromJson(
+        record({
+          'posterCautions': ['The poster marks this entry "(Need to check)".'],
+        }),
+      );
+      expect(flagged.venueNeedsChecking, isTrue);
+      expect(flagged.notes, isEmpty);
+    });
   });
 }

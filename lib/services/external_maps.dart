@@ -35,6 +35,10 @@ abstract final class ExternalMaps {
   /// * Web and desktop: the OpenStreetMap website (Apple Maps in a browser
   ///   on an iPhone).
   ///
+  /// A pin that marks only the area would lead to the neighbourhood centre,
+  /// so for those the maps app searches for the name and address near the
+  /// pin instead (see [searchFor]).
+  ///
   /// Throws an [ArgumentError] unless the pandal has a verified location.
   static MapsLink linkFor(
     Pandal pandal, {
@@ -47,6 +51,17 @@ abstract final class ExternalMaps {
         'pandal',
         'Only pandals with a verified location can be opened in maps',
       );
+    }
+    if (pandal.pinShowsAreaOnly) {
+      final queries = addressSearchQueries(pandal);
+      if (queries.isNotEmpty) {
+        return searchFor(
+          queries.first,
+          near: LatLng(pandal.latitude!, pandal.longitude!),
+          platform: platform,
+          isWeb: isWeb,
+        );
+      }
     }
     final lat = pandal.latitude!.toStringAsFixed(6);
     final lng = pandal.longitude!.toStringAsFixed(6);
@@ -101,10 +116,14 @@ abstract final class ExternalMaps {
   static String _trimTrailingPunctuation(String text) =>
       text.trim().replaceFirst(RegExp(r'[\s.,]+$'), '');
 
-  /// Builds a link that searches for [query] in a maps app, for pandals whose
-  /// location is not verified. The maps app does the searching, so its result
-  /// may not be the pandal: show this only with a clear warning. The app
-  /// itself looks nothing up.
+  /// Builds a link that searches for [query] in a maps app: for pandals
+  /// without a pin, or whose pin marks only the area. The maps app does the
+  /// searching, so its result may not be the pandal. The app itself looks
+  /// nothing up.
+  ///
+  /// [near] makes the maps app search around that point first. Google Maps
+  /// links can't take one, so on the web and desktop the query's area and
+  /// city have to do.
   ///
   /// * Android: a `geo:` search, so the user's choice of maps app opens.
   /// * iOS: an Apple Maps search.
@@ -113,6 +132,7 @@ abstract final class ExternalMaps {
   ///   in a browser on an iPhone).
   static MapsLink searchFor(
     String query, {
+    LatLng? near,
     TargetPlatform? platform,
     bool isWeb = kIsWeb,
   }) {
@@ -124,14 +144,24 @@ abstract final class ExternalMaps {
     // On an iPhone the web app opens Apple Maps, as the iOS app does.
     if (isWeb && target != TargetPlatform.iOS) return MapsLink(web);
 
+    final centre = near == null
+        ? null
+        : '${near.latitude.toStringAsFixed(6)},'
+              '${near.longitude.toStringAsFixed(6)}';
     switch (target) {
       case TargetPlatform.android:
         return MapsLink(
-          Uri.parse('geo:0,0?q=${Uri.encodeComponent(query)}'),
+          Uri.parse('geo:${centre ?? '0,0'}?q=${Uri.encodeComponent(query)}'),
           web,
         );
       case TargetPlatform.iOS:
-        return MapsLink(Uri.https('maps.apple.com', '/', {'q': query}), web);
+        return MapsLink(
+          Uri.https('maps.apple.com', '/', {
+            'q': query,
+            'sll': ?centre,
+          }),
+          web,
+        );
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.macOS:

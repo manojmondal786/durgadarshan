@@ -221,6 +221,54 @@ void main() {
     expect(find.byType(PandalMapPreview), findsNothing);
   });
 
+  testWidgets('an area-level pin says so and searches for the venue', (
+    tester,
+  ) async {
+    final areaPin = PandalRepository(const [
+      Pandal(
+        id: 'test-area-pin',
+        name: 'Test Area Pandal',
+        area: 'Test Area',
+        city: 'Ahmedabad',
+        address: 'Near Test Garden, Test Area.',
+        latitude: 23.0225,
+        longitude: 72.5714,
+        verificationStatus: VerificationStatus.verified,
+        pinPrecision: PinPrecision.area,
+        venueNeedsChecking: true,
+      ),
+    ]);
+    await pumpApp(tester, repository: areaPin, tiles: FakeTileProvider());
+    await openMapTab(tester);
+
+    await tester.tap(find.byType(PandalPin));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('Pin shows the area, not the exact venue'),
+      findsOneWidget,
+    );
+
+    await tester.tap(find.text('Open in Maps'));
+    await tester.pumpAndSettle();
+    expect(opened.single.scheme, 'geo');
+    expect(opened.single.path, '23.022500,72.571400');
+    expect(
+      opened.single.queryParameters['q'],
+      'Test Area Pandal, Near Test Garden, Test Area, Ahmedabad',
+    );
+
+    await tester.tap(find.text('View details'));
+    await tester.pumpAndSettle();
+    expect(
+      find.text(
+        'Venue as listed by the organisers. Please check before you '
+        'travel.\nMap pin shows the area. Use the address to find the '
+        'venue.',
+      ),
+      findsOneWidget,
+    );
+  });
+
   testWidgets('the map opens framed around every pin', (tester) async {
     // Synthetic pins roughly 40 km apart, like Gandhinagar and Bavla.
     const north = LatLng(23.24, 72.65);

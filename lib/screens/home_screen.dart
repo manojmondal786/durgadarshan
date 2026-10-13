@@ -285,18 +285,11 @@ class _Footer extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            'Source: List of Ahmedabad Durga Puja 2026',
+            'Details from the Ahmedabad Durga Puja 2026 list. Timings and '
+            'venues can change, so please check with the organisers.',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.labelSmall
                 ?.copyWith(color: AppColors.inkMuted),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            'App opens are counted anonymously with Google Analytics. No '
-            'names or GPS location are sent.',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.labelSmall
-                ?.copyWith(color: AppColors.inkMuted, fontSize: 10.5),
           ),
         ],
       ),

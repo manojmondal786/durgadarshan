@@ -327,7 +327,14 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Savvy Swaraj, Gota, Ahmedabad.'), findsOneWidget);
-    expect(find.textContaining('Jagatpur'), findsNothing);
+    // The second venue appears only as a friendly hint under the address.
+    expect(
+      find.textContaining(
+        'Listed venues: Savvy Swaraj, Gota, Ahmedabad or Godrej Garden City '
+        'ground, behind police booth, Jagatpur.',
+      ),
+      findsOneWidget,
+    );
     expect(find.text('Notes from the list'), findsNothing);
     expect(find.textContaining(_anyVerificationWording), findsNothing);
   });

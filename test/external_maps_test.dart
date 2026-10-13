@@ -82,6 +82,88 @@ void main() {
       }
     });
 
+    group('an area-level pin', () {
+      const areaPin = Pandal(
+        id: 'test-area-pin',
+        name: 'Test Hall',
+        area: 'Test Area',
+        city: 'Ahmedabad',
+        address: 'Near Test Garden, Test Area.',
+        latitude: 23.0225,
+        longitude: 72.5714,
+        verificationStatus: VerificationStatus.verified,
+        pinPrecision: PinPrecision.area,
+      );
+      const query = 'Test Hall, Near Test Garden, Test Area, Ahmedabad';
+
+      test('on Android searches for the venue around the pin', () {
+        final link = ExternalMaps.linkFor(
+          areaPin,
+          platform: TargetPlatform.android,
+          isWeb: false,
+        );
+
+        expect(link.primary.scheme, 'geo');
+        expect(link.primary.path, '23.022500,72.571400');
+        expect(link.primary.queryParameters, {'q': query});
+        expect(link.fallback?.queryParameters['query'], query);
+      });
+
+      test('on iOS searches Apple Maps near the pin', () {
+        final link = ExternalMaps.linkFor(
+          areaPin,
+          platform: TargetPlatform.iOS,
+          isWeb: false,
+        );
+
+        expect(link.primary.host, 'maps.apple.com');
+        expect(link.primary.queryParameters, {
+          'q': query,
+          'sll': '23.022500,72.571400',
+        });
+      });
+
+      test('on the web searches Google Maps by name and address', () {
+        final link = ExternalMaps.linkFor(areaPin, isWeb: true);
+
+        expect(link.primary.host, 'www.google.com');
+        expect(link.primary.queryParameters, {'api': '1', 'query': query});
+      });
+
+      test('without an address still opens the pin', () {
+        const noAddress = Pandal(
+          id: 'test-area-pin',
+          name: 'Test Hall',
+          area: 'Test Area',
+          city: 'Ahmedabad',
+          latitude: 23.0225,
+          longitude: 72.5714,
+          verificationStatus: VerificationStatus.verified,
+          pinPrecision: PinPrecision.area,
+        );
+
+        final link = ExternalMaps.linkFor(noAddress, isWeb: true);
+        expect(link.primary.host, 'www.openstreetmap.org');
+      });
+
+      test('a landmark pin still opens at its coordinates', () {
+        const landmarkPin = Pandal(
+          id: 'test-landmark-pin',
+          name: 'Test Hall',
+          area: 'Test Area',
+          city: 'Ahmedabad',
+          address: 'Near Test Garden, Test Area.',
+          latitude: 23.0225,
+          longitude: 72.5714,
+          verificationStatus: VerificationStatus.verified,
+          pinPrecision: PinPrecision.landmark,
+        );
+
+        final link = ExternalMaps.linkFor(landmarkPin, isWeb: true);
+        expect(link.primary.host, 'www.openstreetmap.org');
+      });
+    });
+
     test('refuses pandals without a verified location', () {
       const unverifiedWithCoordinates = Pandal(
         id: 'test-unverified',
